@@ -66,6 +66,7 @@ def main():
     dx_grouped_fn = os.path.join('other_data', 'dx_grouped.csv')
     vectors_grouped_fn = os.path.join('other_data', 'vectors_grouped.pkl')
     features_vectors_fn = os.path.join('other_data', 'features_vectors.csv')
+    features_vectors_formatted_fn = os.path.join('other_data', 'features_vectors_formatted.csv')
     
     # load data from csv file
     all_icd_10_df = pd.read_csv(all_icd_10_fn)
@@ -86,20 +87,24 @@ def main():
         # create grouped vectors from grouped diagnoses
         dx_grouped = pd.read_csv(dx_grouped_fn)
         vectors_grouped = convert_to_vector(pat2vec_model, dx_grouped)
-        # save with pickle
+        # save with pickle (not using csv since it converts vectors to strings)
         vectors_grouped.to_pickle(vectors_grouped_fn)
-        # not using csv since it converts vectors to strings
-        # vectors_grouped.to_csv(vectors_grouped_fn, index=False)
     ##### PART 2 #####
 
     ##### PART 3: combine vectors in the thirty days before each visit #####
     if not os.path.exists(features_vectors_fn):
         vectors_grouped = pd.read_pickle(vectors_grouped_fn)
-        # not using csv since it converts vectors to strings
-        # vectors_grouped = pd.read_csv(vectors_grouped_fn)
         features_vectors = create_feature_vectors(vectors_grouped, 30, 0.95)
         features_vectors.to_csv(features_vectors_fn, index=False)
     ##### PART 3 #####
+
+    ##### PART 4: vector formatting #####
+    if not os.path.exists(features_vectors_formatted_fn):
+        features_vectors = pd.read_csv(features_vectors_fn)
+        features_vectors_formatted = features_vectors
+        features_vectors_formatted['example_id']= features_vectors_formatted[['patient_id', 'date']].values.tolist()
+        features_vectors_formatted[['example_id', 'vs']].to_csv(features_vectors_formatted_fn, index=False)
+    ##### PART 4 #####
 
 if __name__ == '__main__':
     main()
