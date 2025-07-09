@@ -43,17 +43,20 @@ def create_feature_vectors(vectors_grouped, timespan, gamma):
                 (vectors_grouped['patient_id'] == curr_patient)
             ].copy()
 
-            # calculate discount and discount all vectors
-            time_differences = month_end - curr_vs['date']
-            discounts = gamma ** time_differences
-            curr_vs['vs'] = discounts * curr_vs['vs']
+            # proceed with calculating feature vector if there are vectors to aggregate
+            # 30 days of no diagnoses before a visit = no vectors to aggregate
+            if(len(curr_vs) != 0):
+                # calculate discount and discount all vectors
+                time_differences = month_end - curr_vs['date']
+                discounts = gamma ** time_differences
+                curr_vs['vs'] = discounts * curr_vs['vs']
 
-            # add discounted vectors together
-            total_vs = pd.DataFrame({'patient_id': [curr_patient], 'date': [month_end], 
-                                     'vs': [np.sum(curr_vs['vs'].to_numpy(), axis=0)]})
+                # add discounted vectors together
+                total_vs = pd.DataFrame({'patient_id': [curr_patient], 'date': [month_end], 
+                                        'vs': [np.sum(curr_vs['vs'].to_numpy(), axis=0)]})
 
-            # add to dataframe
-            features_vectors = pd.concat([features_vectors, total_vs], ignore_index=True)
+                # add to dataframe
+                features_vectors = pd.concat([features_vectors, total_vs], ignore_index=True)
     
     return features_vectors
 
@@ -94,13 +97,9 @@ def main():
         vectors_grouped = pd.read_pickle(vectors_grouped_fn)
         # not using csv since it converts vectors to strings
         # vectors_grouped = pd.read_csv(vectors_grouped_fn)
-        features_vectors = create_feature_vectors(vectors_grouped, 30, 0.9)
+        features_vectors = create_feature_vectors(vectors_grouped, 30, 0.95)
         features_vectors.to_csv(features_vectors_fn, index=False)
     ##### PART 3 #####
-
-    # to do:
-    # need to remove feature vectors with 0 in the 'vs' column
-    # those feature vectors represent patients with 30 days of no diagnoses before a visit
 
 if __name__ == '__main__':
     main()
