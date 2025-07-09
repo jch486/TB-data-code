@@ -406,7 +406,7 @@ def main():
     # avg_month_visits_before_diagnosis(index_tb_date_df, all_dx_visits_df, all_proc_visits_df)
 
     # determine the most common diagnoses recorded during a visit with a TB diagnosis
-    find_most_common_comorbidities(tb_dx_visits_df, all_dx_visits_df, icd_labels_df)
+    # find_most_common_comorbidities(tb_dx_visits_df, all_dx_visits_df, icd_labels_df)
 
     # plot TB diagnoses by age across years
     # plot_TB_diagnoses_age_year(index_tb_date_df, all_enroll_ccae_mdcr_df, all_enroll_medicaid_df)
