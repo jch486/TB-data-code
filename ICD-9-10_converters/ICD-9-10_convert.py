@@ -28,16 +28,18 @@ def icd9_to_icd10_lookup(icd9_to_icd10_df, dx):
     return icd9_to_icd10_df.loc[(icd9_to_icd10_df['icd9cm'] == dx), 'icd10cm']
 
 def main():
-    # load data from csv files
+    # load data from csv files / set up file paths
     icd9_to_icd10_fn = os.path.join('ICD-9-10_converters', 'icd9toicd10cmgem.csv')
     icd9_to_icd10_df = pd.read_csv(icd9_to_icd10_fn)
     all_dx_visits_fn = os.path.join('subsample', 'all_dx_visits.csv')
     all_dx_visits_df = pd.read_csv(all_dx_visits_fn)
+    all_icd_10_fn = os.path.join('other_data', 'all_icd_10.csv')
 
-    # convert all icd-9 diagnoses in all_dx_visits_df into icd-10
-    all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
-    # load diagnoses converted into icd-10 into all_icd_10.csv
-    all_icd_10.to_csv(os.path.join('ICD-9-10_converters', 'all_icd_10.csv'), index=False)
+    if not os.path.exists(all_icd_10_fn):
+        # convert all icd-9 diagnoses in all_dx_visits_df into icd-10
+        all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
+        # load diagnoses converted into icd-10 into all_icd_10.csv
+        all_icd_10.to_csv(all_icd_10_fn, index=False)
 
 
 if __name__ == '__main__':
