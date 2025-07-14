@@ -17,7 +17,17 @@ def convert_to_vector(pat2vec_model, dx_grouped):
         date = row[1]
         dx = row[2]
         new_vect = pat2vec_model.infer_vector(dx.split(", "))
-        new_row = pd.DataFrame({'patient_id': [patient_id], 'date': [date], 'vs': [new_vect]})
+        new_row = pd.DataFrame({'patient_id': [patient_id], 'date': [date]})
+        new_row['f1'] = new_vect[0]
+        new_row['f2'] = new_vect[1]
+        new_row['f3'] = new_vect[2]
+        new_row['f4'] = new_vect[3]
+        new_row['f5'] = new_vect[4]
+        new_row['f6'] = new_vect[5]
+        new_row['f7'] = new_vect[6]
+        new_row['f8'] = new_vect[7]
+        new_row['f9'] = new_vect[8]
+        new_row['f10'] = new_vect[9]
         vectors_grouped = pd.concat([vectors_grouped, new_row], ignore_index=True)
     
     return vectors_grouped
@@ -49,11 +59,29 @@ def create_feature_vectors(vectors_grouped, timespan, gamma):
                 # calculate discount and discount all vectors
                 time_differences = month_end - curr_vs['date']
                 discounts = gamma ** time_differences
-                curr_vs['vs'] = discounts * curr_vs['vs']
+                curr_vs['f1'] = discounts * curr_vs['f1']
+                curr_vs['f2'] = discounts * curr_vs['f2']
+                curr_vs['f3'] = discounts * curr_vs['f3']
+                curr_vs['f4'] = discounts * curr_vs['f4']
+                curr_vs['f5'] = discounts * curr_vs['f5']
+                curr_vs['f6'] = discounts * curr_vs['f6']
+                curr_vs['f7'] = discounts * curr_vs['f7']
+                curr_vs['f8'] = discounts * curr_vs['f8']
+                curr_vs['f9'] = discounts * curr_vs['f9']
+                curr_vs['f10'] = discounts * curr_vs['f10']
 
                 # add discounted vectors together
                 total_vs = pd.DataFrame({'patient_id': [curr_patient], 'date': [month_end], 
-                                        'vs': [np.sum(curr_vs['vs'].to_numpy(), axis=0)]})
+                                        'f1': [np.sum(curr_vs['f1'].to_numpy(), axis=0)], 
+                                        'f2': [np.sum(curr_vs['f2'].to_numpy(), axis=0)], 
+                                        'f3': [np.sum(curr_vs['f3'].to_numpy(), axis=0)], 
+                                        'f4': [np.sum(curr_vs['f4'].to_numpy(), axis=0)], 
+                                        'f5': [np.sum(curr_vs['f5'].to_numpy(), axis=0)], 
+                                        'f6': [np.sum(curr_vs['f6'].to_numpy(), axis=0)], 
+                                        'f7': [np.sum(curr_vs['f7'].to_numpy(), axis=0)], 
+                                        'f8': [np.sum(curr_vs['f8'].to_numpy(), axis=0)], 
+                                        'f9': [np.sum(curr_vs['f9'].to_numpy(), axis=0)], 
+                                        'f10': [np.sum(curr_vs['f10'].to_numpy(), axis=0)], })
 
                 # add to dataframe
                 features_vectors = pd.concat([features_vectors, total_vs], ignore_index=True)
@@ -103,7 +131,7 @@ def main():
         features_vectors = pd.read_csv(features_vectors_fn)
         features_vectors_formatted = features_vectors
         features_vectors_formatted['example_id']= features_vectors_formatted[['patient_id', 'date']].values.tolist()
-        features_vectors_formatted[['example_id', 'vs']].to_csv(features_vectors_formatted_fn, index=False)
+        features_vectors_formatted[['example_id', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10']].to_csv(features_vectors_formatted_fn, index=False)
     ##### PART 4 #####
 
 if __name__ == '__main__':

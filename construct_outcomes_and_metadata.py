@@ -18,6 +18,11 @@ def construct_outcomes(features_vectors, tb_dx_visits_df):
     
     return outcomes
 
+def construct_metadata(outcomes):
+    metadata = outcomes[['example_id']].copy()
+    metadata['person_id'] = metadata['example_id']
+    return metadata
+
 def main():
     # set up file paths and load data
     features_vectors_fn = os.path.join('other_data', 'features_vectors.csv')
@@ -25,12 +30,17 @@ def main():
     tb_dx_visits_fn = os.path.join('subsample', 'tb_dx_visits.csv')
     tb_dx_visits_df = pd.read_csv(tb_dx_visits_fn)
     outcomes_fn = os.path.join('other_data', 'outcomes.csv')
+    metadata_fn = os.path.join('other_data', 'metadata.csv')
 
     if not os.path.exists(outcomes_fn):
         outcomes = construct_outcomes(features_vectors, tb_dx_visits_df)
         outcomes.to_csv(outcomes_fn, index=False)
 
     outcomes = pd.read_csv(outcomes_fn)
+
+    if not os.path.exists(metadata_fn):
+        metadata = construct_metadata(outcomes)
+        metadata.to_csv(metadata_fn, index=False)
 
 if __name__ == '__main__':
     main()
