@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import numpy as np
 import math
-from gensim.models.doc2vec import Doc2Vec
+# from gensim.models.doc2vec import Doc2Vec
 
 # create diagnoses grouped by same patient id and date from all_icd_10.csv
 def group_patient_date(all_icd_10_df):
@@ -33,7 +33,7 @@ def convert_to_vector(pat2vec_model, dx_grouped):
     return vectors_grouped
 
 def create_feature_vectors(vectors_grouped, timespan, gamma):
-    features_vectors = pd.DataFrame()
+    features_vectors = pd.DataFrame(columns=['patient_id', 'date', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10'])
     # get first and last dates in dataset
     date_start = vectors_grouped['date'].to_numpy().min()
     date_end = vectors_grouped['date'].to_numpy().max()
@@ -44,8 +44,10 @@ def create_feature_vectors(vectors_grouped, timespan, gamma):
         month_end = curr_id_date[1]
         month_start = month_end - timespan
         curr_patient = curr_id_date[0]
-        # if the timespan before the current visit date is within the dataset's range
-        if(month_start >= date_start and month_end <= date_end):
+        # overlap = if there is overlap between the 30-day window before this visit and any dates in the final feature vector for this patient
+        overlap = np.isin(np.arange(month_end - 30, month_end), features_vectors[features_vectors['patient_id'] == curr_patient]['date'].values).any()
+        # if the timespan before the current visit date is within the dataset's range and there is no overlap
+        if(month_start >= date_start and month_end <= date_end and not overlap):
             # get all vectors in the timespan before the current visit date, for the specified patient
             curr_vs = vectors_grouped.loc[
                 (vectors_grouped['date'] >= month_start) &
@@ -84,7 +86,8 @@ def create_feature_vectors(vectors_grouped, timespan, gamma):
                                         'f10': [np.sum(curr_vs['f10'].to_numpy(), axis=0)], })
 
                 # add to dataframe
-                features_vectors = pd.concat([features_vectors, total_vs], ignore_index=True)
+                frames = [df for df in [features_vectors, total_vs] if not df.empty]
+                features_vectors = pd.concat(frames, ignore_index=True)
     
     return features_vectors
 
