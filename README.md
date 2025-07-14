@@ -4,4 +4,5 @@
 3. Run construct_features.py and construct_outcomes_and_metadata.py to create feature vectors and outcomes and metadata files.
 
    info: feature vectors are constructed using [Pat2Vec](https://ai.jmir.org/2023/1/e40755) ([model](https://huggingface.co/zidatasciencelab/Pat2Vec))
-4. Run run_policy_learning.zsh to produce results.
+4. Run run_policy_learning.zsh to train models.
+5. Results are stored in experiment_results/my_experiment/results
