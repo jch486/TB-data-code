@@ -37,6 +37,15 @@ def main():
         outcomes.to_csv(outcomes_fn, index=False)
 
     outcomes = pd.read_csv(outcomes_fn)
+    outcomes_tb = outcomes[outcomes['has_tb'] == 1]
+    outcomes = outcomes[outcomes['has_no_tb'] == 1][:806]
+    outcomes = pd.concat([outcomes, outcomes_tb], ignore_index=True)
+    outcomes.to_csv(outcomes_fn, index=False)
+    features_vectors_formatted_fn = os.path.join('other_data', 'features_vectors_formatted.csv')
+    features_vectors_formatted = pd.read_csv(features_vectors_formatted_fn)
+    features_vectors_formatted = features_vectors_formatted[features_vectors_formatted['example_id'].isin(outcomes['example_id'])]
+    features_vectors_formatted.to_csv(features_vectors_formatted_fn, index=False)
+    
 
     if not os.path.exists(metadata_fn):
         metadata = construct_metadata(outcomes)

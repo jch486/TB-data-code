@@ -1,6 +1,6 @@
 import pandas as pd
 
-# returns the proportion of iat and broad in policy_outcomes_df
+# returns metrics in policy_outcomes_df
 def get_metrics(policy_outcomes_df, policy_colname='action', include_defer=False):
 
     '''
@@ -13,11 +13,26 @@ def get_metrics(policy_outcomes_df, policy_colname='action', include_defer=False
     | 4          | ban_ads      | 0       | 1            | 0            |
     '''
 
-    correctness = policy_outcomes_df.apply(
+    accuracy = policy_outcomes_df.apply(
         lambda x: x[f'{x[policy_colname]}']==1, axis=1).mean()
     
+    # number of correct predictions of TB
+    correct_TB = ((policy_outcomes_df['has_tb'] == 1) & (policy_outcomes_df['action'] == 'has_tb')).sum()
+    # total patients with outcomes of TB
+    total_TB = (policy_outcomes_df['has_tb'] == 1).sum()
+    # number of correct predictions of no TB
+    correct_no_TB = ((policy_outcomes_df['has_no_tb'] == 1) & (policy_outcomes_df['action'] == 'has_no_tb')).sum()
+    # total patients with outcomes of no TB
+    total_no_TB = (policy_outcomes_df['has_no_tb'] == 1).sum()
+    
     return {
-        'correctness': correctness
+        'accuracy': accuracy, 
+        'correct TB': correct_TB, 
+        'total TB': total_TB, 
+        'correct no TB': correct_no_TB, 
+        'total no TB': total_no_TB, 
+        'TB prediction rate': correct_TB / total_TB, 
+        'No TB prediction rate': correct_no_TB / total_no_TB
     }
 
     '''
