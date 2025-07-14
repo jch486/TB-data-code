@@ -11,7 +11,7 @@ FEATURES_PATH="other_data/features_vectors_formatted.csv"
 OUTCOMES_PATH="other_data/outcomes.csv"
 METADATA_PATH="other_data/metadata.csv"
 
-REWARD_PARAMS_PATH="other_data/reward_space.json"                     # For direct or exp_reward_max mode
+REWARD_PARAMS_PATH="reward_space.json"                     # For direct or exp_reward_max mode
 
 # Set mode to one of: direct, thresholding, exp_reward_max
 MODE="direct"
