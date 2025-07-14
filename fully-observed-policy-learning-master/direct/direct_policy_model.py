@@ -154,51 +154,48 @@ class DirectPolicyModel:
         train_features_tensor, train_rewards_tensor = self.get_data_tensors(train_cohort, train_rewards_df)
         val_features_tensor, val_rewards_tensor = self.get_data_tensors(val_cohort, val_rewards_df)
 
-        logging.info("step 1")
-        # print(train_features_tensor, train_features_tensor.shape)
-        # print(train_rewards_tensor, train_rewards_tensor.shape)
+        # convert train_features_tensor and train_rewards_tensor to float in batches
+        batch_size = 10000
+        features_float_batches = []
+        rewards_float_batches = []
 
-        print("First row:", train_features_tensor[0])
-        print("First row:", train_features_tensor[0].float())
+        for i in range(0, train_features_tensor.size(0), batch_size):
+            features_batch = train_features_tensor[i:i+batch_size].float()
+            features_float_batches.append(features_batch)
 
-        print("train_features_tensor:", train_features_tensor.float())
-        print("train_rewards_tensor:", train_rewards_tensor.float())
+            rewards_batch = train_rewards_tensor[i:i+batch_size].float()
+            rewards_float_batches.append(rewards_batch)
+
+        train_features_tensor_float = torch.cat(features_float_batches, dim=0)
+        train_rewards_tensor_float = torch.cat(rewards_float_batches, dim=0)
+
         # create a dataset that holds pairs of tensors
-        train_dataset = data_utils.TensorDataset(train_features_tensor.float(),
-                                                 train_rewards_tensor.float())
-        print("blah blah blah")
-        print("train_dataset:", train_dataset)
-        logging.info("step 2")
+        train_dataset = data_utils.TensorDataset(train_features_tensor_float,
+                                                 train_rewards_tensor_float)
         # wrap train_dataset in a DataLoader, which is an iterable over the given dataset
         train_loader = data_utils.DataLoader(train_dataset, batch_size=64, shuffle=True)
-        logging.info("step 3")
 
         # Training loop
         # optimizer = either adam or sgd (stochastic gradient descent)
         optimizer = self.get_optimizer(optimizer_name=curr_training_params['optimizer'],
                                      lr=curr_training_params['lr'])
-        logging.info("step 4")
 
         num_epochs = curr_training_params['num_epochs']
         for epoch in range(num_epochs):
             for feats, rewards in train_loader:
-                logging.info("step 5")
                 # zero the gradients
                 optimizer.zero_grad()
                 output = self.model(feats)
-                logging.info("step 6")
+
                 # Loss from policy distribution
                 loss = policy_loss(output, rewards)
                 loss += self.get_regularization_loss(reg_type=curr_training_params['reg_type'],
                                                     lambda_reg=curr_training_params['lambda_reg'])
-                logging.info("step 7")
 
                 # compute gradients
                 loss.backward()
-                logging.info("step 8")
                 # update the model's weights
                 optimizer.step()
-                logging.info("step 9")
 
             # Compute reward metrics every pre-specified number of epochs
             

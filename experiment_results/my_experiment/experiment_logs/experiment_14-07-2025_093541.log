@@ -1,9 +1,0 @@
-2025-07-14 09:35:41,759 - Namespace(exp_name='my_experiment', mode='direct', num_trials=20, features_path='other_data/features_vectors_formatted.csv', outcomes_path='other_data/outcomes.csv', metadata_path='other_data/metadata.csv', validate=True, test_features_path=None, test_outcomes_path=None, best_models_path=None, best_hyperparams_path=None, predictions_path=None, threshold_combos_path=None, best_thresholds_path=None, threshold_selection_config_path=None, model_params_config_path=None, reward_params_path='reward_space.json', defer=False)
-2025-07-14 09:35:41,759 - Reading in data...
-2025-07-14 09:35:42,037 - Train cohort size: 205975
-2025-07-14 09:35:42,137 - Starting trial 0
-2025-07-14 09:35:42,285 - Train cohort size: 144182
-2025-07-14 09:35:42,285 - Validation cohort size: 61793
-2025-07-14 09:35:42,353 - Running experiment for setting={'nothing': 0}
-2025-07-14 09:35:53,069 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
-2025-07-14 09:35:53,076 - step 1
