@@ -4,6 +4,31 @@ import numpy as np
 import math
 from gensim.models.doc2vec import Doc2Vec
 
+# convert all icd-9 diagnoses in all_dx_visits_df into icd-10
+def icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df):
+    all_dx_visits_df = all_dx_visits_df.drop_duplicates()
+    changed_df = pd.DataFrame()
+    # split all_dx_visits_df into icd-9 and icd-10 diagnoses
+    icd9_half = all_dx_visits_df[all_dx_visits_df['dx_ver'] == 9]
+    icd10_half = all_dx_visits_df[all_dx_visits_df['dx_ver'] == 10]
+
+    # for each icd-9 diagnosis, convert into icd-10 and add it to changed_df
+    for row in icd9_half.itertuples(index=False):
+        patient_id = row[0]
+        inpatient = row[3]
+        date = row[4]
+        conversions = icd9_to_icd10_lookup(icd9_to_icd10_df, row[1])
+        for new_dx in conversions:
+            new_row = pd.DataFrame({'patient_id': [patient_id], 'dx': [new_dx], 'dx_ver': [10], 'inpatient': [inpatient], 'date': [date]})
+            changed_df = pd.concat([changed_df, new_row], ignore_index=True)
+
+    # combine newly mapped icd-10 diagnoses and original icd-10 diagnoses
+    return pd.concat([changed_df, icd10_half], ignore_index=True)
+
+# return all icd-10 codes that correspond to specified icd-9 code
+def icd9_to_icd10_lookup(icd9_to_icd10_df, dx):
+    return icd9_to_icd10_df.loc[(icd9_to_icd10_df['icd9cm'] == dx), 'icd10cm']
+
 # create diagnoses grouped by same patient id and date from all_icd_10.csv
 def group_patient_date(all_icd_10_df):
     return all_icd_10_df.groupby(['patient_id', 'date'])['dx'].agg(', '.join).reset_index()
@@ -113,9 +138,14 @@ def construct_metadata(outcomes):
 
 def main():
     # set up file paths and load data
+    icd9_to_icd10_fn = os.path.join('converters', 'icd9toicd10cmgem.csv')
+    icd9_to_icd10_df = pd.read_csv(icd9_to_icd10_fn)
+    all_dx_visits_fn = os.path.join('subsample', 'all_dx_visits.csv')
+    all_dx_visits_df = pd.read_csv(all_dx_visits_fn)
     all_icd_10_fn = os.path.join('other_data', 'all_icd_10.csv')
     all_icd_10_df = pd.read_csv(all_icd_10_fn)
     dx_grouped_fn = os.path.join('other_data', 'dx_grouped.csv')
+    pat2vec_dim10_fn = os.path.join('converters', 'pat2vec_dim10.model')
     vectors_grouped_fn = os.path.join('other_data', 'vectors_grouped.pkl')
     features_fn = os.path.join('other_data', 'features.csv')
     features_formatted_fn = os.path.join('other_data', 'features_formatted.csv')
@@ -126,76 +156,82 @@ def main():
     metadata_fn = os.path.join('other_data', 'metadata.csv')
     features_formatted_undersampled_fn = os.path.join('other_data', 'features_formatted_undersampled.csv')
 
-    ##### PART 1: group diagnoses by same patient id and date #####
+    ##### PART 1: convert all icd-9 diagnoses in all_dx_visits_df into icd-10 #####
+    if not os.path.exists(all_icd_10_fn):
+        all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
+        all_icd_10.to_csv(all_icd_10_fn, index=False)
+    ##### PART 1 #####
+
+    ##### PART 2: group diagnoses by same patient id and date #####
     if not os.path.exists(dx_grouped_fn):
-        # create diagnoses grouped by same patient id and date from all_icd_10.csv
+        # create diagnoses grouped by same patient id and date from all_icd_10
         dx_grouped = group_patient_date(all_icd_10_df)
         dx_grouped.to_csv(dx_grouped_fn, index=False)
-    ##### PART 1 #####
+    ##### PART 2 #####
 
     dx_grouped = pd.read_csv(dx_grouped_fn)
 
-    ##### PART 2: convert grouped diagnoses to vectors #####
+    ##### PART 3: convert grouped diagnoses to vectors #####
     if not os.path.exists(vectors_grouped_fn):
         # load Pat2Vec Model (which will convert list of diagnoses into 10d vector)
         # https://ai.jmir.org/2023/1/e40755
         # https://huggingface.co/zidatasciencelab/Pat2Vec
-        pat2vec_model = Doc2Vec.load('pat2vec_dim10.model')
+        pat2vec_model = Doc2Vec.load(pat2vec_dim10_fn)
         # create grouped vectors from grouped diagnoses
         vectors_grouped = convert_to_vector(pat2vec_model, dx_grouped)
         # save with pickle (not using csv since it converts vectors to strings)
         vectors_grouped.to_pickle(vectors_grouped_fn)
-    ##### PART 2 #####
+    ##### PART 3 #####
 
     vectors_grouped = pd.read_pickle(vectors_grouped_fn)
 
-    ##### PART 3: combine vectors in the thirty days before each visit #####
+    ##### PART 4: combine vectors in the thirty days before each visit #####
     if not os.path.exists(features_fn):
         features = create_features(vectors_grouped, 30, 0.95)
         features.to_csv(features_fn, index=False)
-    ##### PART 3 #####
+    ##### PART 4 #####
 
     features = pd.read_csv(features_fn)
 
-    ##### PART 4: vector formatting #####
+    ##### PART 5: vector formatting #####
     if not os.path.exists(features_formatted_fn):
         features = pd.read_csv(features_fn)
         features_formatted = features
         features_formatted['example_id']= features_formatted[['patient_id', 'date']].values.tolist()
         features_formatted[['example_id', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10']].to_csv(features_formatted_fn, index=False)
-    ##### PART 4 #####
+    ##### PART 5 #####
 
     features_formatted = pd.read_csv(features_formatted_fn)
 
-    ##### PART 5: construct outcomes #####
+    ##### PART 6: construct outcomes #####
     if not os.path.exists(outcomes_fn):
         outcomes = construct_outcomes(features, tb_dx_visits_df)
         outcomes.to_csv(outcomes_fn, index=False)
-    ##### PART 5 #####
+    ##### PART 6 #####
 
     outcomes = pd.read_csv(outcomes_fn)
 
-    ##### PART 6: balance dataset by removing some patients with no TB from outcomes #####
+    ##### PART 7: balance dataset by removing some patients with no TB from outcomes #####
     if not os.path.exists(outcomes_undersampled_fn):
         outcomes_tb = outcomes[outcomes['has_tb'] == 1]
         outcomes_no_tb = outcomes[outcomes['has_no_tb'] == 1].sample(frac=len(outcomes_tb)/len(outcomes), random_state=42)
         outcomes_undersampled = pd.concat([outcomes_no_tb, outcomes_tb], ignore_index=True)
         outcomes_undersampled.to_csv(outcomes_undersampled_fn, index=False)
-    ##### PART 6 #####
+    ##### PART 7 #####
 
     outcomes_undersampled = pd.read_csv(outcomes_undersampled_fn)
 
-    ##### PART 7: balance dataset by removing same patients from features #####
+    ##### PART 8: balance dataset by removing same patients from features #####
     if not os.path.exists(features_formatted_undersampled_fn):
         features_formatted_undersampled = features_formatted[features_formatted['example_id'].isin(outcomes_undersampled['example_id'])]
         features_formatted_undersampled.to_csv(features_formatted_undersampled_fn, index=False)
-    ##### PART 7 #####
+    ##### PART 8 #####
 
-    ##### PART 8: construct metadata #####
+    ##### PART 9: construct metadata #####
     if not os.path.exists(metadata_fn):
         metadata = construct_metadata(outcomes)
         metadata.to_csv(metadata_fn, index=False)
-    ##### PART 8 #####
+    ##### PART 9 #####
 
 if __name__ == '__main__':
     main()
