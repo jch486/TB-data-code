@@ -1,0 +1,1145 @@
+2025-07-15 14:35:26,690 - Namespace(exp_name='my_experiment', mode='direct', num_trials=20, features_path='other_data/features_formatted.csv', outcomes_path='other_data/outcomes.csv', metadata_path='other_data/metadata.csv', validate=True, test_features_path=None, test_outcomes_path=None, best_models_path=None, best_hyperparams_path=None, predictions_path=None, threshold_combos_path=None, best_thresholds_path=None, threshold_selection_config_path=None, model_params_config_path=None, reward_params_path='reward_space.json', defer=False)
+2025-07-15 14:35:26,690 - Reading in data...
+2025-07-15 14:35:26,777 - Train cohort size: 48765
+2025-07-15 14:35:26,798 - Starting trial 0
+2025-07-15 14:35:26,846 - Train cohort size: 34135
+2025-07-15 14:35:26,846 - Validation cohort size: 14630
+2025-07-15 14:35:26,869 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:35:29,153 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:35:30,771 - Finished with epoch 5
+2025-07-15 14:35:30,775 - Mean (expected) train reward: 0.4655901789665222
+2025-07-15 14:35:30,775 - Mean (expected) val reward: 0.4174058735370636
+2025-07-15 14:35:30,880 - Mean (realized) train reward: 0.05905961622967629
+2025-07-15 14:35:30,925 - Mean (realized) val reward: -0.030211893369788106
+2025-07-15 14:35:31,744 - Finished with epoch 10
+2025-07-15 14:35:31,745 - Mean (expected) train reward: 0.5193819403648376
+2025-07-15 14:35:31,745 - Mean (expected) val reward: 0.47629043459892273
+2025-07-15 14:35:31,848 - Mean (realized) train reward: 0.9518382891460377
+2025-07-15 14:35:31,893 - Mean (realized) val reward: 0.9722488038277513
+2025-07-15 14:35:32,715 - Finished with epoch 15
+2025-07-15 14:35:32,716 - Mean (expected) train reward: 0.563498854637146
+2025-07-15 14:35:32,717 - Mean (expected) val reward: 0.5245004892349243
+2025-07-15 14:35:32,820 - Mean (realized) train reward: 0.947356086128607
+2025-07-15 14:35:32,864 - Mean (realized) val reward: 0.9493506493506494
+2025-07-15 14:35:33,675 - Finished with epoch 20
+2025-07-15 14:35:33,677 - Mean (expected) train reward: 0.600510835647583
+2025-07-15 14:35:33,677 - Mean (expected) val reward: 0.5648902058601379
+2025-07-15 14:35:33,780 - Mean (realized) train reward: 0.9485864948000586
+2025-07-15 14:35:33,824 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:35:34,641 - Finished with epoch 25
+2025-07-15 14:35:34,642 - Mean (expected) train reward: 0.6314796805381775
+2025-07-15 14:35:34,642 - Mean (expected) val reward: 0.5986466407775879
+2025-07-15 14:35:34,744 - Mean (realized) train reward: 0.9491138128021093
+2025-07-15 14:35:34,789 - Mean (realized) val reward: 0.9511961722488038
+2025-07-15 14:35:35,602 - Finished with epoch 30
+2025-07-15 14:35:35,604 - Mean (expected) train reward: 0.6571115255355835
+2025-07-15 14:35:35,604 - Mean (expected) val reward: 0.6265547275543213
+2025-07-15 14:35:35,707 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:35:35,751 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:36,564 - Finished with epoch 35
+2025-07-15 14:35:36,566 - Mean (expected) train reward: 0.6787723898887634
+2025-07-15 14:35:36,566 - Mean (expected) val reward: 0.6501046419143677
+2025-07-15 14:35:36,670 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:35:36,714 - Mean (realized) val reward: 0.9516062884483937
+2025-07-15 14:35:37,527 - Finished with epoch 40
+2025-07-15 14:35:37,528 - Mean (expected) train reward: 0.6977965235710144
+2025-07-15 14:35:37,528 - Mean (expected) val reward: 0.6707726716995239
+2025-07-15 14:35:37,633 - Mean (realized) train reward: 0.9496411308041599
+2025-07-15 14:35:37,678 - Mean (realized) val reward: 0.9520164046479836
+2025-07-15 14:35:38,516 - Finished with epoch 45
+2025-07-15 14:35:38,518 - Mean (expected) train reward: 0.7143552303314209
+2025-07-15 14:35:38,518 - Mean (expected) val reward: 0.6887422204017639
+2025-07-15 14:35:38,622 - Mean (realized) train reward: 0.9497290171378351
+2025-07-15 14:35:38,668 - Mean (realized) val reward: 0.9520164046479836
+2025-07-15 14:35:39,495 - Finished with epoch 50
+2025-07-15 14:35:39,496 - Mean (expected) train reward: 0.7293764352798462
+2025-07-15 14:35:39,496 - Mean (expected) val reward: 0.7050442099571228
+2025-07-15 14:35:39,601 - Mean (realized) train reward: 0.9497290171378351
+2025-07-15 14:35:39,646 - Mean (realized) val reward: 0.9520164046479836
+2025-07-15 14:35:39,652 - Starting trial 1
+2025-07-15 14:35:39,676 - Train cohort size: 34135
+2025-07-15 14:35:39,677 - Validation cohort size: 14630
+2025-07-15 14:35:39,691 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:35:42,127 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:35:43,071 - Finished with epoch 5
+2025-07-15 14:35:43,073 - Mean (expected) train reward: 0.5477640628814697
+2025-07-15 14:35:43,073 - Mean (expected) val reward: 0.5234086513519287
+2025-07-15 14:35:43,176 - Mean (realized) train reward: 0.9489966310238758
+2025-07-15 14:35:43,219 - Mean (realized) val reward: 0.9483253588516747
+2025-07-15 14:35:44,039 - Finished with epoch 10
+2025-07-15 14:35:44,040 - Mean (expected) train reward: 0.5870807766914368
+2025-07-15 14:35:44,041 - Mean (expected) val reward: 0.5643789172172546
+2025-07-15 14:35:44,146 - Mean (realized) train reward: 0.9492016991357843
+2025-07-15 14:35:44,192 - Mean (realized) val reward: 0.9511961722488038
+2025-07-15 14:35:45,024 - Finished with epoch 15
+2025-07-15 14:35:45,025 - Mean (expected) train reward: 0.6200928092002869
+2025-07-15 14:35:45,026 - Mean (expected) val reward: 0.5986880660057068
+2025-07-15 14:35:45,131 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:35:45,176 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:46,024 - Finished with epoch 20
+2025-07-15 14:35:46,025 - Mean (expected) train reward: 0.6482030153274536
+2025-07-15 14:35:46,026 - Mean (expected) val reward: 0.6278270483016968
+2025-07-15 14:35:46,131 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:35:46,177 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:47,018 - Finished with epoch 25
+2025-07-15 14:35:47,019 - Mean (expected) train reward: 0.6721409559249878
+2025-07-15 14:35:47,019 - Mean (expected) val reward: 0.6525861024856567
+2025-07-15 14:35:47,125 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:35:47,172 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:48,001 - Finished with epoch 30
+2025-07-15 14:35:48,002 - Mean (expected) train reward: 0.6925370097160339
+2025-07-15 14:35:48,002 - Mean (expected) val reward: 0.6736220121383667
+2025-07-15 14:35:48,108 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:35:48,155 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:48,992 - Finished with epoch 35
+2025-07-15 14:35:48,994 - Mean (expected) train reward: 0.7101408243179321
+2025-07-15 14:35:48,994 - Mean (expected) val reward: 0.6917348504066467
+2025-07-15 14:35:49,102 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:35:49,148 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:49,998 - Finished with epoch 40
+2025-07-15 14:35:49,999 - Mean (expected) train reward: 0.7260664105415344
+2025-07-15 14:35:49,999 - Mean (expected) val reward: 0.7081025838851929
+2025-07-15 14:35:50,106 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:35:50,152 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:51,001 - Finished with epoch 45
+2025-07-15 14:35:51,002 - Mean (expected) train reward: 0.7400469779968262
+2025-07-15 14:35:51,002 - Mean (expected) val reward: 0.7224295139312744
+2025-07-15 14:35:51,109 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:35:51,155 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:52,334 - Finished with epoch 50
+2025-07-15 14:35:52,339 - Mean (expected) train reward: 0.7523525357246399
+2025-07-15 14:35:52,340 - Mean (expected) val reward: 0.7350009679794312
+2025-07-15 14:35:52,496 - Mean (realized) train reward: 0.9499926761388604
+2025-07-15 14:35:52,548 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:35:52,552 - Starting trial 2
+2025-07-15 14:35:52,579 - Train cohort size: 34135
+2025-07-15 14:35:52,579 - Validation cohort size: 14630
+2025-07-15 14:35:52,595 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:35:55,025 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:35:55,839 - Finished with epoch 5
+2025-07-15 14:35:55,840 - Mean (expected) train reward: 0.46952730417251587
+2025-07-15 14:35:55,841 - Mean (expected) val reward: 0.5240880250930786
+2025-07-15 14:35:55,945 - Mean (realized) train reward: 0.662897319466823
+2025-07-15 14:35:55,990 - Mean (realized) val reward: 0.7527682843472318
+2025-07-15 14:35:56,822 - Finished with epoch 10
+2025-07-15 14:35:56,824 - Mean (expected) train reward: 0.5224120616912842
+2025-07-15 14:35:56,824 - Mean (expected) val reward: 0.5712100267410278
+2025-07-15 14:35:56,931 - Mean (realized) train reward: 0.9475318587959572
+2025-07-15 14:35:56,977 - Mean (realized) val reward: 0.9446343130553657
+2025-07-15 14:35:57,815 - Finished with epoch 15
+2025-07-15 14:35:57,817 - Mean (expected) train reward: 0.5668694376945496
+2025-07-15 14:35:57,817 - Mean (expected) val reward: 0.6108399629592896
+2025-07-15 14:35:57,925 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:35:57,972 - Mean (realized) val reward: 0.94688995215311
+2025-07-15 14:35:58,820 - Finished with epoch 20
+2025-07-15 14:35:58,821 - Mean (expected) train reward: 0.6037783622741699
+2025-07-15 14:35:58,821 - Mean (expected) val reward: 0.643771231174469
+2025-07-15 14:35:58,929 - Mean (realized) train reward: 0.9507836531419365
+2025-07-15 14:35:58,976 - Mean (realized) val reward: 0.947095010252905
+2025-07-15 14:35:59,845 - Finished with epoch 25
+2025-07-15 14:35:59,846 - Mean (expected) train reward: 0.6348986029624939
+2025-07-15 14:35:59,847 - Mean (expected) val reward: 0.6715391874313354
+2025-07-15 14:35:59,954 - Mean (realized) train reward: 0.9508715394756115
+2025-07-15 14:36:00,001 - Mean (realized) val reward: 0.9479152426520847
+2025-07-15 14:36:00,857 - Finished with epoch 30
+2025-07-15 14:36:00,859 - Mean (expected) train reward: 0.6611576080322266
+2025-07-15 14:36:00,859 - Mean (expected) val reward: 0.6949921250343323
+2025-07-15 14:36:00,967 - Mean (realized) train reward: 0.9510473121429618
+2025-07-15 14:36:01,014 - Mean (realized) val reward: 0.9479152426520847
+2025-07-15 14:36:01,864 - Finished with epoch 35
+2025-07-15 14:36:01,865 - Mean (expected) train reward: 0.6833153367042542
+2025-07-15 14:36:01,865 - Mean (expected) val reward: 0.7148146033287048
+2025-07-15 14:36:01,973 - Mean (realized) train reward: 0.951223084810312
+2025-07-15 14:36:02,020 - Mean (realized) val reward: 0.9485304169514696
+2025-07-15 14:36:02,868 - Finished with epoch 40
+2025-07-15 14:36:02,869 - Mean (expected) train reward: 0.7034714818000793
+2025-07-15 14:36:02,869 - Mean (expected) val reward: 0.7328348159790039
+2025-07-15 14:36:02,979 - Mean (realized) train reward: 0.951223084810312
+2025-07-15 14:36:03,025 - Mean (realized) val reward: 0.9485304169514696
+2025-07-15 14:36:03,879 - Finished with epoch 45
+2025-07-15 14:36:03,880 - Mean (expected) train reward: 0.7209864258766174
+2025-07-15 14:36:03,880 - Mean (expected) val reward: 0.7485129237174988
+2025-07-15 14:36:03,989 - Mean (realized) train reward: 0.951223084810312
+2025-07-15 14:36:04,035 - Mean (realized) val reward: 0.9485304169514696
+2025-07-15 14:36:04,888 - Finished with epoch 50
+2025-07-15 14:36:04,889 - Mean (expected) train reward: 0.7356587052345276
+2025-07-15 14:36:04,889 - Mean (expected) val reward: 0.7616714835166931
+2025-07-15 14:36:04,998 - Mean (realized) train reward: 0.951223084810312
+2025-07-15 14:36:05,045 - Mean (realized) val reward: 0.9485304169514696
+2025-07-15 14:36:05,046 - Starting trial 3
+2025-07-15 14:36:05,073 - Train cohort size: 34135
+2025-07-15 14:36:05,073 - Validation cohort size: 14630
+2025-07-15 14:36:05,088 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:36:07,414 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:36:08,236 - Finished with epoch 5
+2025-07-15 14:36:08,237 - Mean (expected) train reward: 0.467930406332016
+2025-07-15 14:36:08,237 - Mean (expected) val reward: 0.5127863883972168
+2025-07-15 14:36:08,343 - Mean (realized) train reward: 0.2973780577120258
+2025-07-15 14:36:08,388 - Mean (realized) val reward: 0.45297334244702664
+2025-07-15 14:36:09,229 - Finished with epoch 10
+2025-07-15 14:36:09,231 - Mean (expected) train reward: 0.5212332606315613
+2025-07-15 14:36:09,231 - Mean (expected) val reward: 0.5606458187103271
+2025-07-15 14:36:09,338 - Mean (realized) train reward: 0.9530101069283726
+2025-07-15 14:36:09,384 - Mean (realized) val reward: 0.9450444292549556
+2025-07-15 14:36:10,235 - Finished with epoch 15
+2025-07-15 14:36:10,237 - Mean (expected) train reward: 0.5654239654541016
+2025-07-15 14:36:10,237 - Mean (expected) val reward: 0.6002468466758728
+2025-07-15 14:36:10,345 - Mean (realized) train reward: 0.950519994140911
+2025-07-15 14:36:10,393 - Mean (realized) val reward: 0.9485304169514696
+2025-07-15 14:36:11,246 - Finished with epoch 20
+2025-07-15 14:36:11,247 - Mean (expected) train reward: 0.6022220849990845
+2025-07-15 14:36:11,248 - Mean (expected) val reward: 0.6331443786621094
+2025-07-15 14:36:11,357 - Mean (realized) train reward: 0.9509594258092866
+2025-07-15 14:36:11,404 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:12,264 - Finished with epoch 25
+2025-07-15 14:36:12,266 - Mean (expected) train reward: 0.6335310935974121
+2025-07-15 14:36:12,266 - Mean (expected) val reward: 0.6610919833183289
+2025-07-15 14:36:12,375 - Mean (realized) train reward: 0.9510473121429618
+2025-07-15 14:36:12,422 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:13,289 - Finished with epoch 30
+2025-07-15 14:36:13,291 - Mean (expected) train reward: 0.6600701808929443
+2025-07-15 14:36:13,291 - Mean (expected) val reward: 0.6847296357154846
+2025-07-15 14:36:13,399 - Mean (realized) train reward: 0.9510473121429618
+2025-07-15 14:36:13,446 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:14,305 - Finished with epoch 35
+2025-07-15 14:36:14,307 - Mean (expected) train reward: 0.683034360408783
+2025-07-15 14:36:14,307 - Mean (expected) val reward: 0.7051494121551514
+2025-07-15 14:36:14,416 - Mean (realized) train reward: 0.9510473121429618
+2025-07-15 14:36:14,463 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:15,326 - Finished with epoch 40
+2025-07-15 14:36:15,328 - Mean (expected) train reward: 0.7031799554824829
+2025-07-15 14:36:15,328 - Mean (expected) val reward: 0.7230302095413208
+2025-07-15 14:36:15,437 - Mean (realized) train reward: 0.9510473121429618
+2025-07-15 14:36:15,484 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:16,343 - Finished with epoch 45
+2025-07-15 14:36:16,344 - Mean (expected) train reward: 0.7205014228820801
+2025-07-15 14:36:16,344 - Mean (expected) val reward: 0.7383665442466736
+2025-07-15 14:36:16,454 - Mean (realized) train reward: 0.9510473121429618
+2025-07-15 14:36:16,501 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:17,366 - Finished with epoch 50
+2025-07-15 14:36:17,368 - Mean (expected) train reward: 0.7361613512039185
+2025-07-15 14:36:17,368 - Mean (expected) val reward: 0.7522138357162476
+2025-07-15 14:36:17,476 - Mean (realized) train reward: 0.9510473121429618
+2025-07-15 14:36:17,524 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:17,526 - Starting trial 4
+2025-07-15 14:36:17,550 - Train cohort size: 34135
+2025-07-15 14:36:17,550 - Validation cohort size: 14630
+2025-07-15 14:36:17,564 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:36:19,928 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:36:20,790 - Finished with epoch 5
+2025-07-15 14:36:20,792 - Mean (expected) train reward: 0.49183931946754456
+2025-07-15 14:36:20,792 - Mean (expected) val reward: 0.4923696517944336
+2025-07-15 14:36:20,900 - Mean (realized) train reward: 0.8839900395488501
+2025-07-15 14:36:20,947 - Mean (realized) val reward: 0.8680792891319207
+2025-07-15 14:36:21,826 - Finished with epoch 10
+2025-07-15 14:36:21,828 - Mean (expected) train reward: 0.5419464111328125
+2025-07-15 14:36:21,828 - Mean (expected) val reward: 0.5416364669799805
+2025-07-15 14:36:21,935 - Mean (realized) train reward: 0.9478834041306576
+2025-07-15 14:36:21,981 - Mean (realized) val reward: 0.9491455912508544
+2025-07-15 14:36:22,852 - Finished with epoch 15
+2025-07-15 14:36:22,853 - Mean (expected) train reward: 0.5825005769729614
+2025-07-15 14:36:22,853 - Mean (expected) val reward: 0.5814148783683777
+2025-07-15 14:36:22,962 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:36:23,009 - Mean (realized) val reward: 0.9501708817498291
+2025-07-15 14:36:23,868 - Finished with epoch 20
+2025-07-15 14:36:23,870 - Mean (expected) train reward: 0.6166068315505981
+2025-07-15 14:36:23,870 - Mean (expected) val reward: 0.6148171424865723
+2025-07-15 14:36:23,979 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:36:24,026 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:36:24,888 - Finished with epoch 25
+2025-07-15 14:36:24,889 - Mean (expected) train reward: 0.6451282501220703
+2025-07-15 14:36:24,889 - Mean (expected) val reward: 0.6427137851715088
+2025-07-15 14:36:25,000 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:36:25,047 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:36:25,905 - Finished with epoch 30
+2025-07-15 14:36:25,907 - Mean (expected) train reward: 0.6694666743278503
+2025-07-15 14:36:25,907 - Mean (expected) val reward: 0.6664784550666809
+2025-07-15 14:36:26,019 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:36:26,067 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:36:26,942 - Finished with epoch 35
+2025-07-15 14:36:26,943 - Mean (expected) train reward: 0.6906137466430664
+2025-07-15 14:36:26,944 - Mean (expected) val reward: 0.6870925426483154
+2025-07-15 14:36:27,055 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:36:27,103 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:36:27,960 - Finished with epoch 40
+2025-07-15 14:36:27,961 - Mean (expected) train reward: 0.7093777656555176
+2025-07-15 14:36:27,961 - Mean (expected) val reward: 0.7053691744804382
+2025-07-15 14:36:28,072 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:36:28,120 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:36:29,017 - Finished with epoch 45
+2025-07-15 14:36:29,020 - Mean (expected) train reward: 0.725763738155365
+2025-07-15 14:36:29,020 - Mean (expected) val reward: 0.7213025689125061
+2025-07-15 14:36:29,131 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:36:29,178 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:36:30,050 - Finished with epoch 50
+2025-07-15 14:36:30,052 - Mean (expected) train reward: 0.7400460839271545
+2025-07-15 14:36:30,052 - Mean (expected) val reward: 0.7351657748222351
+2025-07-15 14:36:30,163 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:36:30,211 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:36:30,212 - Starting trial 5
+2025-07-15 14:36:30,245 - Train cohort size: 34135
+2025-07-15 14:36:30,245 - Validation cohort size: 14630
+2025-07-15 14:36:30,261 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:36:32,624 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:36:33,454 - Finished with epoch 5
+2025-07-15 14:36:33,455 - Mean (expected) train reward: 0.4567130506038666
+2025-07-15 14:36:33,456 - Mean (expected) val reward: 0.4758927524089813
+2025-07-15 14:36:33,563 - Mean (realized) train reward: 0.02718617255016845
+2025-07-15 14:36:33,610 - Mean (realized) val reward: 0.06425153793574846
+2025-07-15 14:36:34,469 - Finished with epoch 10
+2025-07-15 14:36:34,471 - Mean (expected) train reward: 0.5124219655990601
+2025-07-15 14:36:34,471 - Mean (expected) val reward: 0.5292554497718811
+2025-07-15 14:36:34,578 - Mean (realized) train reward: 0.9612128314047166
+2025-07-15 14:36:34,625 - Mean (realized) val reward: 0.9510594668489405
+2025-07-15 14:36:35,487 - Finished with epoch 15
+2025-07-15 14:36:35,489 - Mean (expected) train reward: 0.5587405562400818
+2025-07-15 14:36:35,489 - Mean (expected) val reward: 0.5736115574836731
+2025-07-15 14:36:35,597 - Mean (realized) train reward: 0.9532151750402812
+2025-07-15 14:36:35,644 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:36:36,509 - Finished with epoch 20
+2025-07-15 14:36:36,510 - Mean (expected) train reward: 0.5968443155288696
+2025-07-15 14:36:36,510 - Mean (expected) val reward: 0.6100879907608032
+2025-07-15 14:36:36,621 - Mean (realized) train reward: 0.950519994140911
+2025-07-15 14:36:36,669 - Mean (realized) val reward: 0.9493506493506494
+2025-07-15 14:36:37,534 - Finished with epoch 25
+2025-07-15 14:36:37,536 - Mean (expected) train reward: 0.629006028175354
+2025-07-15 14:36:37,536 - Mean (expected) val reward: 0.6408653259277344
+2025-07-15 14:36:37,647 - Mean (realized) train reward: 0.9506957668082613
+2025-07-15 14:36:37,695 - Mean (realized) val reward: 0.9493506493506494
+2025-07-15 14:36:38,585 - Finished with epoch 30
+2025-07-15 14:36:38,586 - Mean (expected) train reward: 0.6559775471687317
+2025-07-15 14:36:38,587 - Mean (expected) val reward: 0.6666648387908936
+2025-07-15 14:36:38,699 - Mean (realized) train reward: 0.9506957668082613
+2025-07-15 14:36:38,747 - Mean (realized) val reward: 0.9493506493506494
+2025-07-15 14:36:39,631 - Finished with epoch 35
+2025-07-15 14:36:39,633 - Mean (expected) train reward: 0.6792834401130676
+2025-07-15 14:36:39,633 - Mean (expected) val reward: 0.6889470815658569
+2025-07-15 14:36:39,744 - Mean (realized) train reward: 0.9506957668082613
+2025-07-15 14:36:39,792 - Mean (realized) val reward: 0.9495557074504443
+2025-07-15 14:36:40,670 - Finished with epoch 40
+2025-07-15 14:36:40,671 - Mean (expected) train reward: 0.6991310715675354
+2025-07-15 14:36:40,671 - Mean (expected) val reward: 0.7079072594642639
+2025-07-15 14:36:40,782 - Mean (realized) train reward: 0.9506957668082613
+2025-07-15 14:36:40,830 - Mean (realized) val reward: 0.9495557074504443
+2025-07-15 14:36:41,700 - Finished with epoch 45
+2025-07-15 14:36:41,702 - Mean (expected) train reward: 0.7165318727493286
+2025-07-15 14:36:41,702 - Mean (expected) val reward: 0.7245200872421265
+2025-07-15 14:36:41,812 - Mean (realized) train reward: 0.9506957668082613
+2025-07-15 14:36:41,859 - Mean (realized) val reward: 0.9497607655502392
+2025-07-15 14:36:42,736 - Finished with epoch 50
+2025-07-15 14:36:42,738 - Mean (expected) train reward: 0.7320089340209961
+2025-07-15 14:36:42,738 - Mean (expected) val reward: 0.7392866611480713
+2025-07-15 14:36:42,850 - Mean (realized) train reward: 0.9506957668082613
+2025-07-15 14:36:42,899 - Mean (realized) val reward: 0.9497607655502392
+2025-07-15 14:36:42,900 - Starting trial 6
+2025-07-15 14:36:42,925 - Train cohort size: 34135
+2025-07-15 14:36:42,925 - Validation cohort size: 14630
+2025-07-15 14:36:42,940 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:36:45,248 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:36:46,080 - Finished with epoch 5
+2025-07-15 14:36:46,082 - Mean (expected) train reward: 0.5147860646247864
+2025-07-15 14:36:46,082 - Mean (expected) val reward: 0.5101720690727234
+2025-07-15 14:36:46,190 - Mean (realized) train reward: 0.9467408817928812
+2025-07-15 14:36:46,236 - Mean (realized) val reward: 0.9601503759398496
+2025-07-15 14:36:47,098 - Finished with epoch 10
+2025-07-15 14:36:47,100 - Mean (expected) train reward: 0.5596422553062439
+2025-07-15 14:36:47,100 - Mean (expected) val reward: 0.5554385781288147
+2025-07-15 14:36:47,209 - Mean (realized) train reward: 0.956672037498169
+2025-07-15 14:36:47,255 - Mean (realized) val reward: 0.9544087491455913
+2025-07-15 14:36:48,118 - Finished with epoch 15
+2025-07-15 14:36:48,119 - Mean (expected) train reward: 0.5973283052444458
+2025-07-15 14:36:48,119 - Mean (expected) val reward: 0.5934857726097107
+2025-07-15 14:36:48,230 - Mean (realized) train reward: 0.9480591767980079
+2025-07-15 14:36:48,278 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:36:49,137 - Finished with epoch 20
+2025-07-15 14:36:49,138 - Mean (expected) train reward: 0.6287404894828796
+2025-07-15 14:36:49,138 - Mean (expected) val reward: 0.6252138614654541
+2025-07-15 14:36:49,251 - Mean (realized) train reward: 0.9492016991357843
+2025-07-15 14:36:49,299 - Mean (realized) val reward: 0.9493506493506494
+2025-07-15 14:36:50,173 - Finished with epoch 25
+2025-07-15 14:36:50,174 - Mean (expected) train reward: 0.6546878218650818
+2025-07-15 14:36:50,174 - Mean (expected) val reward: 0.6514363288879395
+2025-07-15 14:36:50,287 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:36:50,335 - Mean (realized) val reward: 0.9493506493506494
+2025-07-15 14:36:51,210 - Finished with epoch 30
+2025-07-15 14:36:51,211 - Mean (expected) train reward: 0.6773155331611633
+2025-07-15 14:36:51,212 - Mean (expected) val reward: 0.6743188500404358
+2025-07-15 14:36:51,323 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:36:51,371 - Mean (realized) val reward: 0.9495557074504443
+2025-07-15 14:36:52,541 - Finished with epoch 35
+2025-07-15 14:36:52,543 - Mean (expected) train reward: 0.6970700621604919
+2025-07-15 14:36:52,543 - Mean (expected) val reward: 0.6942964792251587
+2025-07-15 14:36:52,668 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:36:52,717 - Mean (realized) val reward: 0.9495557074504443
+2025-07-15 14:36:53,602 - Finished with epoch 40
+2025-07-15 14:36:53,604 - Mean (expected) train reward: 0.7145510315895081
+2025-07-15 14:36:53,604 - Mean (expected) val reward: 0.7119893431663513
+2025-07-15 14:36:53,717 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:36:53,766 - Mean (realized) val reward: 0.9497607655502392
+2025-07-15 14:36:54,650 - Finished with epoch 45
+2025-07-15 14:36:54,652 - Mean (expected) train reward: 0.7293932437896729
+2025-07-15 14:36:54,652 - Mean (expected) val reward: 0.7270256876945496
+2025-07-15 14:36:54,762 - Mean (realized) train reward: 0.9494653581368098
+2025-07-15 14:36:54,810 - Mean (realized) val reward: 0.9497607655502392
+2025-07-15 14:36:55,698 - Finished with epoch 50
+2025-07-15 14:36:55,700 - Mean (expected) train reward: 0.7426581382751465
+2025-07-15 14:36:55,700 - Mean (expected) val reward: 0.7404657602310181
+2025-07-15 14:36:55,811 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:36:55,859 - Mean (realized) val reward: 0.9499658236500341
+2025-07-15 14:36:55,862 - Starting trial 7
+2025-07-15 14:36:55,891 - Train cohort size: 34135
+2025-07-15 14:36:55,891 - Validation cohort size: 14630
+2025-07-15 14:36:55,910 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:36:58,308 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:36:59,148 - Finished with epoch 5
+2025-07-15 14:36:59,149 - Mean (expected) train reward: 0.48717933893203735
+2025-07-15 14:36:59,150 - Mean (expected) val reward: 0.3614743649959564
+2025-07-15 14:36:59,258 - Mean (realized) train reward: 0.09723158048923393
+2025-07-15 14:36:59,305 - Mean (realized) val reward: -0.16630211893369787
+2025-07-15 14:37:00,173 - Finished with epoch 10
+2025-07-15 14:37:00,175 - Mean (expected) train reward: 0.5349334478378296
+2025-07-15 14:37:00,175 - Mean (expected) val reward: 0.42258259654045105
+2025-07-15 14:37:00,285 - Mean (realized) train reward: 0.9119964845466529
+2025-07-15 14:37:00,332 - Mean (realized) val reward: 0.9144224196855776
+2025-07-15 14:37:01,203 - Finished with epoch 15
+2025-07-15 14:37:01,205 - Mean (expected) train reward: 0.5740199685096741
+2025-07-15 14:37:01,205 - Mean (expected) val reward: 0.47262057662010193
+2025-07-15 14:37:01,317 - Mean (realized) train reward: 0.9461256774571554
+2025-07-15 14:37:01,365 - Mean (realized) val reward: 0.9522214627477785
+2025-07-15 14:37:02,245 - Finished with epoch 20
+2025-07-15 14:37:02,246 - Mean (expected) train reward: 0.6063752770423889
+2025-07-15 14:37:02,246 - Mean (expected) val reward: 0.5140639543533325
+2025-07-15 14:37:02,359 - Mean (realized) train reward: 0.9484986084663835
+2025-07-15 14:37:02,408 - Mean (realized) val reward: 0.9542720437457279
+2025-07-15 14:37:03,289 - Finished with epoch 25
+2025-07-15 14:37:03,290 - Mean (expected) train reward: 0.6344247460365295
+2025-07-15 14:37:03,290 - Mean (expected) val reward: 0.5500057339668274
+2025-07-15 14:37:03,401 - Mean (realized) train reward: 0.9485864948000586
+2025-07-15 14:37:03,449 - Mean (realized) val reward: 0.9544771018455229
+2025-07-15 14:37:04,331 - Finished with epoch 30
+2025-07-15 14:37:04,333 - Mean (expected) train reward: 0.6572327017784119
+2025-07-15 14:37:04,333 - Mean (expected) val reward: 0.5792430639266968
+2025-07-15 14:37:04,446 - Mean (realized) train reward: 0.9485864948000586
+2025-07-15 14:37:04,495 - Mean (realized) val reward: 0.9544771018455229
+2025-07-15 14:37:05,383 - Finished with epoch 35
+2025-07-15 14:37:05,384 - Mean (expected) train reward: 0.6768140196800232
+2025-07-15 14:37:05,384 - Mean (expected) val reward: 0.6043583750724792
+2025-07-15 14:37:05,496 - Mean (realized) train reward: 0.9486743811337337
+2025-07-15 14:37:05,544 - Mean (realized) val reward: 0.9544771018455229
+2025-07-15 14:37:06,425 - Finished with epoch 40
+2025-07-15 14:37:06,426 - Mean (expected) train reward: 0.6938433051109314
+2025-07-15 14:37:06,426 - Mean (expected) val reward: 0.6262038946151733
+2025-07-15 14:37:06,540 - Mean (realized) train reward: 0.9486743811337337
+2025-07-15 14:37:06,589 - Mean (realized) val reward: 0.9544771018455229
+2025-07-15 14:37:07,472 - Finished with epoch 45
+2025-07-15 14:37:07,474 - Mean (expected) train reward: 0.7088581919670105
+2025-07-15 14:37:07,474 - Mean (expected) val reward: 0.6454784274101257
+2025-07-15 14:37:07,586 - Mean (realized) train reward: 0.9486743811337337
+2025-07-15 14:37:07,634 - Mean (realized) val reward: 0.9544771018455229
+2025-07-15 14:37:08,516 - Finished with epoch 50
+2025-07-15 14:37:08,517 - Mean (expected) train reward: 0.7218578457832336
+2025-07-15 14:37:08,517 - Mean (expected) val reward: 0.6621816754341125
+2025-07-15 14:37:08,634 - Mean (realized) train reward: 0.9486743811337337
+2025-07-15 14:37:08,682 - Mean (realized) val reward: 0.9544771018455229
+2025-07-15 14:37:08,684 - Starting trial 8
+2025-07-15 14:37:08,709 - Train cohort size: 34135
+2025-07-15 14:37:08,709 - Validation cohort size: 14630
+2025-07-15 14:37:08,724 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:37:11,083 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:37:11,915 - Finished with epoch 5
+2025-07-15 14:37:11,917 - Mean (expected) train reward: 0.6113554835319519
+2025-07-15 14:37:11,917 - Mean (expected) val reward: 0.432054340839386
+2025-07-15 14:37:12,040 - Mean (realized) train reward: 0.9469166544602314
+2025-07-15 14:37:12,095 - Mean (realized) val reward: 0.9577580314422419
+2025-07-15 14:37:13,011 - Finished with epoch 10
+2025-07-15 14:37:13,012 - Mean (expected) train reward: 0.6372812986373901
+2025-07-15 14:37:13,012 - Mean (expected) val reward: 0.47231051325798035
+2025-07-15 14:37:13,134 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:13,180 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:14,061 - Finished with epoch 15
+2025-07-15 14:37:14,062 - Mean (expected) train reward: 0.6587293744087219
+2025-07-15 14:37:14,062 - Mean (expected) val reward: 0.5056016445159912
+2025-07-15 14:37:14,176 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:14,224 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:15,153 - Finished with epoch 20
+2025-07-15 14:37:15,155 - Mean (expected) train reward: 0.677320659160614
+2025-07-15 14:37:15,155 - Mean (expected) val reward: 0.5344429612159729
+2025-07-15 14:37:15,267 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:15,316 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:16,201 - Finished with epoch 25
+2025-07-15 14:37:16,202 - Mean (expected) train reward: 0.6930444836616516
+2025-07-15 14:37:16,203 - Mean (expected) val reward: 0.5588218569755554
+2025-07-15 14:37:16,315 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:16,364 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:17,246 - Finished with epoch 30
+2025-07-15 14:37:17,248 - Mean (expected) train reward: 0.7066571712493896
+2025-07-15 14:37:17,248 - Mean (expected) val reward: 0.5799111723899841
+2025-07-15 14:37:17,360 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:17,409 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:18,292 - Finished with epoch 35
+2025-07-15 14:37:18,294 - Mean (expected) train reward: 0.7186039686203003
+2025-07-15 14:37:18,294 - Mean (expected) val reward: 0.5984078049659729
+2025-07-15 14:37:18,406 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:18,454 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:19,334 - Finished with epoch 40
+2025-07-15 14:37:19,336 - Mean (expected) train reward: 0.7295337319374084
+2025-07-15 14:37:19,336 - Mean (expected) val reward: 0.615319550037384
+2025-07-15 14:37:19,449 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:19,498 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:20,387 - Finished with epoch 45
+2025-07-15 14:37:20,388 - Mean (expected) train reward: 0.7392807006835938
+2025-07-15 14:37:20,388 - Mean (expected) val reward: 0.6303929090499878
+2025-07-15 14:37:20,499 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:20,548 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:21,444 - Finished with epoch 50
+2025-07-15 14:37:21,445 - Mean (expected) train reward: 0.7478505373001099
+2025-07-15 14:37:21,445 - Mean (expected) val reward: 0.6436296701431274
+2025-07-15 14:37:21,561 - Mean (realized) train reward: 0.9471803134612568
+2025-07-15 14:37:21,611 - Mean (realized) val reward: 0.9579630895420369
+2025-07-15 14:37:21,614 - Starting trial 9
+2025-07-15 14:37:21,641 - Train cohort size: 34135
+2025-07-15 14:37:21,641 - Validation cohort size: 14630
+2025-07-15 14:37:21,657 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:37:24,065 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:37:24,904 - Finished with epoch 5
+2025-07-15 14:37:24,905 - Mean (expected) train reward: 0.5000795125961304
+2025-07-15 14:37:24,905 - Mean (expected) val reward: 0.44382554292678833
+2025-07-15 14:37:25,013 - Mean (realized) train reward: 0.3152189834480738
+2025-07-15 14:37:25,061 - Mean (realized) val reward: 0.26322624743677375
+2025-07-15 14:37:25,923 - Finished with epoch 10
+2025-07-15 14:37:25,924 - Mean (expected) train reward: 0.5464571714401245
+2025-07-15 14:37:25,924 - Mean (expected) val reward: 0.4964466691017151
+2025-07-15 14:37:26,036 - Mean (realized) train reward: 0.9557931741614178
+2025-07-15 14:37:26,085 - Mean (realized) val reward: 0.9741626794258373
+2025-07-15 14:37:26,972 - Finished with epoch 15
+2025-07-15 14:37:26,973 - Mean (expected) train reward: 0.585416853427887
+2025-07-15 14:37:26,973 - Mean (expected) val reward: 0.5406153798103333
+2025-07-15 14:37:27,085 - Mean (realized) train reward: 0.9491138128021093
+2025-07-15 14:37:27,134 - Mean (realized) val reward: 0.9520164046479836
+2025-07-15 14:37:28,008 - Finished with epoch 20
+2025-07-15 14:37:28,010 - Mean (expected) train reward: 0.6174713373184204
+2025-07-15 14:37:28,010 - Mean (expected) val reward: 0.576972484588623
+2025-07-15 14:37:28,123 - Mean (realized) train reward: 0.9492895854694595
+2025-07-15 14:37:28,171 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:37:29,043 - Finished with epoch 25
+2025-07-15 14:37:29,045 - Mean (expected) train reward: 0.644149124622345
+2025-07-15 14:37:29,045 - Mean (expected) val reward: 0.6072342991828918
+2025-07-15 14:37:29,156 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:37:29,204 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:37:30,088 - Finished with epoch 30
+2025-07-15 14:37:30,089 - Mean (expected) train reward: 0.667378842830658
+2025-07-15 14:37:30,089 - Mean (expected) val reward: 0.6335890889167786
+2025-07-15 14:37:30,202 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:37:30,250 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:37:31,134 - Finished with epoch 35
+2025-07-15 14:37:31,135 - Mean (expected) train reward: 0.6873044371604919
+2025-07-15 14:37:31,136 - Mean (expected) val reward: 0.6562011241912842
+2025-07-15 14:37:31,249 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:37:31,297 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:37:32,239 - Finished with epoch 40
+2025-07-15 14:37:32,240 - Mean (expected) train reward: 0.7041072845458984
+2025-07-15 14:37:32,240 - Mean (expected) val reward: 0.6752757430076599
+2025-07-15 14:37:32,352 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:37:32,401 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:37:33,303 - Finished with epoch 45
+2025-07-15 14:37:33,304 - Mean (expected) train reward: 0.7190622091293335
+2025-07-15 14:37:33,304 - Mean (expected) val reward: 0.6922594308853149
+2025-07-15 14:37:33,416 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:37:33,464 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:37:34,361 - Finished with epoch 50
+2025-07-15 14:37:34,363 - Mean (expected) train reward: 0.7322359681129456
+2025-07-15 14:37:34,363 - Mean (expected) val reward: 0.7072274684906006
+2025-07-15 14:37:34,479 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:37:34,528 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:37:34,530 - Starting trial 10
+2025-07-15 14:37:34,558 - Train cohort size: 34135
+2025-07-15 14:37:34,558 - Validation cohort size: 14630
+2025-07-15 14:37:34,574 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:37:36,985 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:37:37,817 - Finished with epoch 5
+2025-07-15 14:37:37,818 - Mean (expected) train reward: 0.554733157157898
+2025-07-15 14:37:37,818 - Mean (expected) val reward: 0.4573245644569397
+2025-07-15 14:37:37,926 - Mean (realized) train reward: 0.9483228357990332
+2025-07-15 14:37:37,973 - Mean (realized) val reward: 0.9456596035543404
+2025-07-15 14:37:38,850 - Finished with epoch 10
+2025-07-15 14:37:38,852 - Mean (expected) train reward: 0.5909048914909363
+2025-07-15 14:37:38,852 - Mean (expected) val reward: 0.5025336146354675
+2025-07-15 14:37:38,963 - Mean (realized) train reward: 0.9467408817928812
+2025-07-15 14:37:39,011 - Mean (realized) val reward: 0.9530416951469584
+2025-07-15 14:37:39,883 - Finished with epoch 15
+2025-07-15 14:37:39,885 - Mean (expected) train reward: 0.6207820773124695
+2025-07-15 14:37:39,885 - Mean (expected) val reward: 0.5397956967353821
+2025-07-15 14:37:39,997 - Mean (realized) train reward: 0.9480591767980079
+2025-07-15 14:37:40,045 - Mean (realized) val reward: 0.9534518113465482
+2025-07-15 14:37:40,917 - Finished with epoch 20
+2025-07-15 14:37:40,919 - Mean (expected) train reward: 0.6459454298019409
+2025-07-15 14:37:40,919 - Mean (expected) val reward: 0.5711303353309631
+2025-07-15 14:37:41,031 - Mean (realized) train reward: 0.9481470631316831
+2025-07-15 14:37:41,079 - Mean (realized) val reward: 0.9536568694463431
+2025-07-15 14:37:41,951 - Finished with epoch 25
+2025-07-15 14:37:41,952 - Mean (expected) train reward: 0.6676262617111206
+2025-07-15 14:37:41,952 - Mean (expected) val reward: 0.5980892181396484
+2025-07-15 14:37:42,065 - Mean (realized) train reward: 0.9484107221327084
+2025-07-15 14:37:42,114 - Mean (realized) val reward: 0.9540669856459331
+2025-07-15 14:37:42,990 - Finished with epoch 30
+2025-07-15 14:37:42,991 - Mean (expected) train reward: 0.6861228346824646
+2025-07-15 14:37:42,991 - Mean (expected) val reward: 0.6210538148880005
+2025-07-15 14:37:43,102 - Mean (realized) train reward: 0.9484107221327084
+2025-07-15 14:37:43,151 - Mean (realized) val reward: 0.9540669856459331
+2025-07-15 14:37:44,033 - Finished with epoch 35
+2025-07-15 14:37:44,035 - Mean (expected) train reward: 0.7023969888687134
+2025-07-15 14:37:44,035 - Mean (expected) val reward: 0.6412341594696045
+2025-07-15 14:37:44,147 - Mean (realized) train reward: 0.9484986084663835
+2025-07-15 14:37:44,195 - Mean (realized) val reward: 0.9540669856459331
+2025-07-15 14:37:45,119 - Finished with epoch 40
+2025-07-15 14:37:45,121 - Mean (expected) train reward: 0.7165235280990601
+2025-07-15 14:37:45,121 - Mean (expected) val reward: 0.6587327122688293
+2025-07-15 14:37:45,232 - Mean (realized) train reward: 0.9484986084663835
+2025-07-15 14:37:45,280 - Mean (realized) val reward: 0.9542720437457279
+2025-07-15 14:37:46,177 - Finished with epoch 45
+2025-07-15 14:37:46,179 - Mean (expected) train reward: 0.7289748787879944
+2025-07-15 14:37:46,179 - Mean (expected) val reward: 0.6741191744804382
+2025-07-15 14:37:46,292 - Mean (realized) train reward: 0.9484986084663835
+2025-07-15 14:37:46,341 - Mean (realized) val reward: 0.9542720437457279
+2025-07-15 14:37:47,238 - Finished with epoch 50
+2025-07-15 14:37:47,239 - Mean (expected) train reward: 0.7400889992713928
+2025-07-15 14:37:47,240 - Mean (expected) val reward: 0.6878358721733093
+2025-07-15 14:37:47,352 - Mean (realized) train reward: 0.9485864948000586
+2025-07-15 14:37:47,400 - Mean (realized) val reward: 0.9542720437457279
+2025-07-15 14:37:47,403 - Starting trial 11
+2025-07-15 14:37:47,430 - Train cohort size: 34135
+2025-07-15 14:37:47,430 - Validation cohort size: 14630
+2025-07-15 14:37:47,446 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:37:49,893 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:37:50,738 - Finished with epoch 5
+2025-07-15 14:37:50,739 - Mean (expected) train reward: 0.6113604307174683
+2025-07-15 14:37:50,739 - Mean (expected) val reward: 0.5922418236732483
+2025-07-15 14:37:50,847 - Mean (realized) train reward: 0.9497290171378351
+2025-07-15 14:37:50,894 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:52,049 - Finished with epoch 10
+2025-07-15 14:37:52,052 - Mean (expected) train reward: 0.6397433876991272
+2025-07-15 14:37:52,052 - Mean (expected) val reward: 0.6224945187568665
+2025-07-15 14:37:52,170 - Mean (realized) train reward: 0.9497290171378351
+2025-07-15 14:37:52,219 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:53,111 - Finished with epoch 15
+2025-07-15 14:37:53,113 - Mean (expected) train reward: 0.663629412651062
+2025-07-15 14:37:53,113 - Mean (expected) val reward: 0.6479797959327698
+2025-07-15 14:37:53,226 - Mean (realized) train reward: 0.9498169034715102
+2025-07-15 14:37:53,276 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:54,168 - Finished with epoch 20
+2025-07-15 14:37:54,169 - Mean (expected) train reward: 0.6842248439788818
+2025-07-15 14:37:54,169 - Mean (expected) val reward: 0.6699720025062561
+2025-07-15 14:37:54,282 - Mean (realized) train reward: 0.9498169034715102
+2025-07-15 14:37:54,331 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:55,232 - Finished with epoch 25
+2025-07-15 14:37:55,233 - Mean (expected) train reward: 0.7018381953239441
+2025-07-15 14:37:55,233 - Mean (expected) val reward: 0.68879634141922
+2025-07-15 14:37:55,347 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:37:55,396 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:56,284 - Finished with epoch 30
+2025-07-15 14:37:56,286 - Mean (expected) train reward: 0.7177729606628418
+2025-07-15 14:37:56,286 - Mean (expected) val reward: 0.7058440446853638
+2025-07-15 14:37:56,397 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:37:56,446 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:57,335 - Finished with epoch 35
+2025-07-15 14:37:57,336 - Mean (expected) train reward: 0.7315255403518677
+2025-07-15 14:37:57,336 - Mean (expected) val reward: 0.7205793857574463
+2025-07-15 14:37:57,448 - Mean (realized) train reward: 0.9499926761388604
+2025-07-15 14:37:57,496 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:58,389 - Finished with epoch 40
+2025-07-15 14:37:58,390 - Mean (expected) train reward: 0.743838369846344
+2025-07-15 14:37:58,390 - Mean (expected) val reward: 0.7337949275970459
+2025-07-15 14:37:58,504 - Mean (realized) train reward: 0.9499926761388604
+2025-07-15 14:37:58,554 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:37:59,472 - Finished with epoch 45
+2025-07-15 14:37:59,473 - Mean (expected) train reward: 0.7548323273658752
+2025-07-15 14:37:59,473 - Mean (expected) val reward: 0.7456067204475403
+2025-07-15 14:37:59,585 - Mean (realized) train reward: 0.9499926761388604
+2025-07-15 14:37:59,634 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:38:00,530 - Finished with epoch 50
+2025-07-15 14:38:00,531 - Mean (expected) train reward: 0.7645322680473328
+2025-07-15 14:38:00,531 - Mean (expected) val reward: 0.7560569643974304
+2025-07-15 14:38:00,644 - Mean (realized) train reward: 0.9499926761388604
+2025-07-15 14:38:00,692 - Mean (realized) val reward: 0.9514012303485988
+2025-07-15 14:38:00,695 - Starting trial 12
+2025-07-15 14:38:00,723 - Train cohort size: 34135
+2025-07-15 14:38:00,723 - Validation cohort size: 14630
+2025-07-15 14:38:00,739 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:38:03,257 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:38:04,099 - Finished with epoch 5
+2025-07-15 14:38:04,101 - Mean (expected) train reward: 0.5816099047660828
+2025-07-15 14:38:04,101 - Mean (expected) val reward: 0.5345590710639954
+2025-07-15 14:38:04,215 - Mean (realized) train reward: 0.9526878570382306
+2025-07-15 14:38:04,264 - Mean (realized) val reward: 0.9520164046479836
+2025-07-15 14:38:05,181 - Finished with epoch 10
+2025-07-15 14:38:05,182 - Mean (expected) train reward: 0.6144576668739319
+2025-07-15 14:38:05,183 - Mean (expected) val reward: 0.5713983178138733
+2025-07-15 14:38:05,296 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:05,345 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:06,257 - Finished with epoch 15
+2025-07-15 14:38:06,259 - Mean (expected) train reward: 0.642294704914093
+2025-07-15 14:38:06,259 - Mean (expected) val reward: 0.60258549451828
+2025-07-15 14:38:06,375 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:06,424 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:07,336 - Finished with epoch 20
+2025-07-15 14:38:07,337 - Mean (expected) train reward: 0.6659172773361206
+2025-07-15 14:38:07,338 - Mean (expected) val reward: 0.6290215849876404
+2025-07-15 14:38:07,454 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:07,504 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:08,423 - Finished with epoch 25
+2025-07-15 14:38:08,425 - Mean (expected) train reward: 0.6858905553817749
+2025-07-15 14:38:08,425 - Mean (expected) val reward: 0.6513511538505554
+2025-07-15 14:38:08,543 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:08,594 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:09,516 - Finished with epoch 30
+2025-07-15 14:38:09,518 - Mean (expected) train reward: 0.7035807967185974
+2025-07-15 14:38:09,518 - Mean (expected) val reward: 0.6711203455924988
+2025-07-15 14:38:09,637 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:09,688 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:10,617 - Finished with epoch 35
+2025-07-15 14:38:10,619 - Mean (expected) train reward: 0.7192113995552063
+2025-07-15 14:38:10,619 - Mean (expected) val reward: 0.6885814070701599
+2025-07-15 14:38:10,738 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:10,789 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:11,722 - Finished with epoch 40
+2025-07-15 14:38:11,723 - Mean (expected) train reward: 0.7329649329185486
+2025-07-15 14:38:11,723 - Mean (expected) val reward: 0.7039383053779602
+2025-07-15 14:38:11,843 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:11,894 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:12,830 - Finished with epoch 45
+2025-07-15 14:38:12,831 - Mean (expected) train reward: 0.7451452016830444
+2025-07-15 14:38:12,832 - Mean (expected) val reward: 0.7175242304801941
+2025-07-15 14:38:12,955 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:13,006 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:13,934 - Finished with epoch 50
+2025-07-15 14:38:13,936 - Mean (expected) train reward: 0.7553264498710632
+2025-07-15 14:38:13,936 - Mean (expected) val reward: 0.7288506031036377
+2025-07-15 14:38:14,056 - Mean (realized) train reward: 0.9495532444704848
+2025-07-15 14:38:14,107 - Mean (realized) val reward: 0.9524265208475735
+2025-07-15 14:38:14,110 - Starting trial 13
+2025-07-15 14:38:14,138 - Train cohort size: 34135
+2025-07-15 14:38:14,138 - Validation cohort size: 14630
+2025-07-15 14:38:14,154 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:38:16,524 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:38:17,370 - Finished with epoch 5
+2025-07-15 14:38:17,372 - Mean (expected) train reward: 0.566192626953125
+2025-07-15 14:38:17,372 - Mean (expected) val reward: 0.5540292263031006
+2025-07-15 14:38:17,485 - Mean (realized) train reward: 0.9563497876080269
+2025-07-15 14:38:17,534 - Mean (realized) val reward: 0.9493506493506494
+2025-07-15 14:38:18,418 - Finished with epoch 10
+2025-07-15 14:38:18,420 - Mean (expected) train reward: 0.6028491258621216
+2025-07-15 14:38:18,420 - Mean (expected) val reward: 0.5911074876785278
+2025-07-15 14:38:18,532 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:38:18,580 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:19,473 - Finished with epoch 15
+2025-07-15 14:38:19,474 - Mean (expected) train reward: 0.6336464881896973
+2025-07-15 14:38:19,474 - Mean (expected) val reward: 0.6222106218338013
+2025-07-15 14:38:19,587 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:38:19,636 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:20,527 - Finished with epoch 20
+2025-07-15 14:38:20,528 - Mean (expected) train reward: 0.6598899364471436
+2025-07-15 14:38:20,529 - Mean (expected) val reward: 0.6486873030662537
+2025-07-15 14:38:20,642 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:38:20,690 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:21,589 - Finished with epoch 25
+2025-07-15 14:38:21,590 - Mean (expected) train reward: 0.6822971105575562
+2025-07-15 14:38:21,591 - Mean (expected) val reward: 0.6712614297866821
+2025-07-15 14:38:21,711 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:38:21,760 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:22,700 - Finished with epoch 30
+2025-07-15 14:38:22,702 - Mean (expected) train reward: 0.70100998878479
+2025-07-15 14:38:22,702 - Mean (expected) val reward: 0.6900675892829895
+2025-07-15 14:38:22,816 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:38:22,866 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:23,772 - Finished with epoch 35
+2025-07-15 14:38:23,774 - Mean (expected) train reward: 0.7178300619125366
+2025-07-15 14:38:23,774 - Mean (expected) val reward: 0.7069448828697205
+2025-07-15 14:38:23,889 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:38:23,940 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:24,880 - Finished with epoch 40
+2025-07-15 14:38:24,882 - Mean (expected) train reward: 0.7330052256584167
+2025-07-15 14:38:24,882 - Mean (expected) val reward: 0.7221606969833374
+2025-07-15 14:38:24,998 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:38:25,048 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:25,960 - Finished with epoch 45
+2025-07-15 14:38:25,962 - Mean (expected) train reward: 0.7466825842857361
+2025-07-15 14:38:25,962 - Mean (expected) val reward: 0.7358596920967102
+2025-07-15 14:38:26,078 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:38:26,128 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:27,074 - Finished with epoch 50
+2025-07-15 14:38:27,076 - Mean (expected) train reward: 0.7583826184272766
+2025-07-15 14:38:27,076 - Mean (expected) val reward: 0.7475307583808899
+2025-07-15 14:38:27,191 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:38:27,241 - Mean (realized) val reward: 0.950786056049214
+2025-07-15 14:38:27,244 - Starting trial 14
+2025-07-15 14:38:27,271 - Train cohort size: 34135
+2025-07-15 14:38:27,272 - Validation cohort size: 14630
+2025-07-15 14:38:27,287 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:38:29,678 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:38:30,514 - Finished with epoch 5
+2025-07-15 14:38:30,516 - Mean (expected) train reward: 0.47788572311401367
+2025-07-15 14:38:30,516 - Mean (expected) val reward: 0.48041945695877075
+2025-07-15 14:38:30,626 - Mean (realized) train reward: 0.13267906840486304
+2025-07-15 14:38:30,676 - Mean (realized) val reward: 0.17402597402597403
+2025-07-15 14:38:31,691 - Finished with epoch 10
+2025-07-15 14:38:31,693 - Mean (expected) train reward: 0.5295881628990173
+2025-07-15 14:38:31,693 - Mean (expected) val reward: 0.5316795110702515
+2025-07-15 14:38:31,808 - Mean (realized) train reward: 0.9608026951808993
+2025-07-15 14:38:31,857 - Mean (realized) val reward: 0.956185919343814
+2025-07-15 14:38:32,728 - Finished with epoch 15
+2025-07-15 14:38:32,730 - Mean (expected) train reward: 0.5730447173118591
+2025-07-15 14:38:32,730 - Mean (expected) val reward: 0.5746976733207703
+2025-07-15 14:38:32,844 - Mean (realized) train reward: 0.9557345832723012
+2025-07-15 14:38:32,893 - Mean (realized) val reward: 0.9489405331510594
+2025-07-15 14:38:33,781 - Finished with epoch 20
+2025-07-15 14:38:33,783 - Mean (expected) train reward: 0.6086073517799377
+2025-07-15 14:38:33,783 - Mean (expected) val reward: 0.6098386645317078
+2025-07-15 14:38:33,896 - Mean (realized) train reward: 0.9499047898051853
+2025-07-15 14:38:33,945 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:34,829 - Finished with epoch 25
+2025-07-15 14:38:34,831 - Mean (expected) train reward: 0.6384064555168152
+2025-07-15 14:38:34,831 - Mean (expected) val reward: 0.6392440795898438
+2025-07-15 14:38:34,944 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:38:34,993 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:35,881 - Finished with epoch 30
+2025-07-15 14:38:35,882 - Mean (expected) train reward: 0.6641772389411926
+2025-07-15 14:38:35,883 - Mean (expected) val reward: 0.664640486240387
+2025-07-15 14:38:35,995 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:38:36,044 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:36,928 - Finished with epoch 35
+2025-07-15 14:38:36,930 - Mean (expected) train reward: 0.6858364343643188
+2025-07-15 14:38:36,930 - Mean (expected) val reward: 0.6859473586082458
+2025-07-15 14:38:37,043 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:38:37,092 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:38,008 - Finished with epoch 40
+2025-07-15 14:38:38,009 - Mean (expected) train reward: 0.705365777015686
+2025-07-15 14:38:38,009 - Mean (expected) val reward: 0.7051373720169067
+2025-07-15 14:38:38,125 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:38:38,175 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:39,103 - Finished with epoch 45
+2025-07-15 14:38:39,104 - Mean (expected) train reward: 0.7219189405441284
+2025-07-15 14:38:39,104 - Mean (expected) val reward: 0.7213774919509888
+2025-07-15 14:38:39,220 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:38:39,270 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:40,181 - Finished with epoch 50
+2025-07-15 14:38:40,182 - Mean (expected) train reward: 0.7366046905517578
+2025-07-15 14:38:40,182 - Mean (expected) val reward: 0.7357630133628845
+2025-07-15 14:38:40,300 - Mean (realized) train reward: 0.950432107807236
+2025-07-15 14:38:40,351 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:40,354 - Starting trial 15
+2025-07-15 14:38:40,382 - Train cohort size: 34135
+2025-07-15 14:38:40,382 - Validation cohort size: 14630
+2025-07-15 14:38:40,398 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:38:42,835 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:38:43,674 - Finished with epoch 5
+2025-07-15 14:38:43,675 - Mean (expected) train reward: 0.43876081705093384
+2025-07-15 14:38:43,675 - Mean (expected) val reward: 0.43257540464401245
+2025-07-15 14:38:43,784 - Mean (realized) train reward: 0.02170792441775304
+2025-07-15 14:38:43,830 - Mean (realized) val reward: 0.01114149008885851
+2025-07-15 14:38:44,698 - Finished with epoch 10
+2025-07-15 14:38:44,699 - Mean (expected) train reward: 0.4961351752281189
+2025-07-15 14:38:44,699 - Mean (expected) val reward: 0.49037668108940125
+2025-07-15 14:38:44,819 - Mean (realized) train reward: 0.9277574337190567
+2025-07-15 14:38:44,866 - Mean (realized) val reward: 0.8867395762132604
+2025-07-15 14:38:45,740 - Finished with epoch 15
+2025-07-15 14:38:45,741 - Mean (expected) train reward: 0.5435656309127808
+2025-07-15 14:38:45,741 - Mean (expected) val reward: 0.538198709487915
+2025-07-15 14:38:45,855 - Mean (realized) train reward: 0.9511059030320785
+2025-07-15 14:38:45,903 - Mean (realized) val reward: 0.9481203007518797
+2025-07-15 14:38:46,784 - Finished with epoch 20
+2025-07-15 14:38:46,786 - Mean (expected) train reward: 0.58400958776474
+2025-07-15 14:38:46,786 - Mean (expected) val reward: 0.579012393951416
+2025-07-15 14:38:46,898 - Mean (realized) train reward: 0.9492895854694595
+2025-07-15 14:38:46,946 - Mean (realized) val reward: 0.9495557074504443
+2025-07-15 14:38:47,832 - Finished with epoch 25
+2025-07-15 14:38:47,833 - Mean (expected) train reward: 0.6167675852775574
+2025-07-15 14:38:47,833 - Mean (expected) val reward: 0.6120889782905579
+2025-07-15 14:38:47,946 - Mean (realized) train reward: 0.9499926761388604
+2025-07-15 14:38:47,995 - Mean (realized) val reward: 0.9497607655502392
+2025-07-15 14:38:48,884 - Finished with epoch 30
+2025-07-15 14:38:48,885 - Mean (expected) train reward: 0.6453344225883484
+2025-07-15 14:38:48,885 - Mean (expected) val reward: 0.640952467918396
+2025-07-15 14:38:48,999 - Mean (realized) train reward: 0.9500805624725355
+2025-07-15 14:38:49,047 - Mean (realized) val reward: 0.9497607655502392
+2025-07-15 14:38:49,944 - Finished with epoch 35
+2025-07-15 14:38:49,946 - Mean (expected) train reward: 0.6697340607643127
+2025-07-15 14:38:49,946 - Mean (expected) val reward: 0.6656288504600525
+2025-07-15 14:38:50,061 - Mean (realized) train reward: 0.9500805624725355
+2025-07-15 14:38:50,111 - Mean (realized) val reward: 0.9501708817498291
+2025-07-15 14:38:51,050 - Finished with epoch 40
+2025-07-15 14:38:51,051 - Mean (expected) train reward: 0.6903034448623657
+2025-07-15 14:38:51,051 - Mean (expected) val reward: 0.6864528656005859
+2025-07-15 14:38:51,168 - Mean (realized) train reward: 0.9500805624725355
+2025-07-15 14:38:51,218 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:52,345 - Finished with epoch 45
+2025-07-15 14:38:52,348 - Mean (expected) train reward: 0.7075691223144531
+2025-07-15 14:38:52,348 - Mean (expected) val reward: 0.7039450407028198
+2025-07-15 14:38:52,476 - Mean (realized) train reward: 0.9500805624725355
+2025-07-15 14:38:52,530 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:53,466 - Finished with epoch 50
+2025-07-15 14:38:53,467 - Mean (expected) train reward: 0.7230094075202942
+2025-07-15 14:38:53,467 - Mean (expected) val reward: 0.7195961475372314
+2025-07-15 14:38:53,585 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:38:53,636 - Mean (realized) val reward: 0.9503759398496241
+2025-07-15 14:38:53,643 - Starting trial 16
+2025-07-15 14:38:53,671 - Train cohort size: 34135
+2025-07-15 14:38:53,671 - Validation cohort size: 14630
+2025-07-15 14:38:53,688 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:38:56,181 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:38:57,021 - Finished with epoch 5
+2025-07-15 14:38:57,022 - Mean (expected) train reward: 0.4932551681995392
+2025-07-15 14:38:57,022 - Mean (expected) val reward: 0.42440667748451233
+2025-07-15 14:38:57,134 - Mean (realized) train reward: 0.09623553537424931
+2025-07-15 14:38:57,183 - Mean (realized) val reward: -0.016131237183868764
+2025-07-15 14:38:58,056 - Finished with epoch 10
+2025-07-15 14:38:58,058 - Mean (expected) train reward: 0.5414278507232666
+2025-07-15 14:38:58,058 - Mean (expected) val reward: 0.47967347502708435
+2025-07-15 14:38:58,171 - Mean (realized) train reward: 0.9487329720228505
+2025-07-15 14:38:58,220 - Mean (realized) val reward: 0.9562542720437457
+2025-07-15 14:38:59,103 - Finished with epoch 15
+2025-07-15 14:38:59,104 - Mean (expected) train reward: 0.5805597901344299
+2025-07-15 14:38:59,104 - Mean (expected) val reward: 0.5244490504264832
+2025-07-15 14:38:59,217 - Mean (realized) train reward: 0.9492016991357843
+2025-07-15 14:38:59,265 - Mean (realized) val reward: 0.9526315789473684
+2025-07-15 14:39:00,161 - Finished with epoch 20
+2025-07-15 14:39:00,162 - Mean (expected) train reward: 0.6136319041252136
+2025-07-15 14:39:00,162 - Mean (expected) val reward: 0.5622347593307495
+2025-07-15 14:39:00,274 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:39:00,323 - Mean (realized) val reward: 0.9526315789473684
+2025-07-15 14:39:01,215 - Finished with epoch 25
+2025-07-15 14:39:01,216 - Mean (expected) train reward: 0.6416596174240112
+2025-07-15 14:39:01,216 - Mean (expected) val reward: 0.5941886901855469
+2025-07-15 14:39:01,329 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:39:01,378 - Mean (realized) val reward: 0.9528366370471634
+2025-07-15 14:39:02,278 - Finished with epoch 30
+2025-07-15 14:39:02,279 - Mean (expected) train reward: 0.6652893424034119
+2025-07-15 14:39:02,280 - Mean (expected) val reward: 0.6211066842079163
+2025-07-15 14:39:02,395 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:39:02,445 - Mean (realized) val reward: 0.9528366370471634
+2025-07-15 14:39:03,353 - Finished with epoch 35
+2025-07-15 14:39:03,354 - Mean (expected) train reward: 0.6849982142448425
+2025-07-15 14:39:03,355 - Mean (expected) val reward: 0.6434949040412903
+2025-07-15 14:39:03,470 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:39:03,521 - Mean (realized) val reward: 0.9528366370471634
+2025-07-15 14:39:04,432 - Finished with epoch 40
+2025-07-15 14:39:04,433 - Mean (expected) train reward: 0.7025952935218811
+2025-07-15 14:39:04,433 - Mean (expected) val reward: 0.6634587645530701
+2025-07-15 14:39:04,551 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:39:04,601 - Mean (realized) val reward: 0.9528366370471634
+2025-07-15 14:39:05,522 - Finished with epoch 45
+2025-07-15 14:39:05,523 - Mean (expected) train reward: 0.7179032564163208
+2025-07-15 14:39:05,524 - Mean (expected) val reward: 0.6807981133460999
+2025-07-15 14:39:05,640 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:39:05,690 - Mean (realized) val reward: 0.9528366370471634
+2025-07-15 14:39:06,604 - Finished with epoch 50
+2025-07-15 14:39:06,605 - Mean (expected) train reward: 0.73147052526474
+2025-07-15 14:39:06,605 - Mean (expected) val reward: 0.6961460709571838
+2025-07-15 14:39:06,723 - Mean (realized) train reward: 0.9493774718031346
+2025-07-15 14:39:06,773 - Mean (realized) val reward: 0.9528366370471634
+2025-07-15 14:39:06,775 - Starting trial 17
+2025-07-15 14:39:06,801 - Train cohort size: 34135
+2025-07-15 14:39:06,801 - Validation cohort size: 14630
+2025-07-15 14:39:06,816 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:39:09,185 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:39:10,023 - Finished with epoch 5
+2025-07-15 14:39:10,024 - Mean (expected) train reward: 0.4877111315727234
+2025-07-15 14:39:10,025 - Mean (expected) val reward: 0.4834507405757904
+2025-07-15 14:39:10,133 - Mean (realized) train reward: 0.7496997216932767
+2025-07-15 14:39:10,180 - Mean (realized) val reward: 0.7941216678058783
+2025-07-15 14:39:11,048 - Finished with epoch 10
+2025-07-15 14:39:11,049 - Mean (expected) train reward: 0.5378671288490295
+2025-07-15 14:39:11,050 - Mean (expected) val reward: 0.5338715314865112
+2025-07-15 14:39:11,161 - Mean (realized) train reward: 0.9479712904643328
+2025-07-15 14:39:11,208 - Mean (realized) val reward: 0.9491455912508544
+2025-07-15 14:39:12,082 - Finished with epoch 15
+2025-07-15 14:39:12,083 - Mean (expected) train reward: 0.5787258744239807
+2025-07-15 14:39:12,083 - Mean (expected) val reward: 0.5749028921127319
+2025-07-15 14:39:12,195 - Mean (realized) train reward: 0.9500805624725355
+2025-07-15 14:39:12,244 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:13,128 - Finished with epoch 20
+2025-07-15 14:39:13,129 - Mean (expected) train reward: 0.6126821637153625
+2025-07-15 14:39:13,129 - Mean (expected) val reward: 0.6089754700660706
+2025-07-15 14:39:13,242 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:39:13,291 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:14,177 - Finished with epoch 25
+2025-07-15 14:39:14,178 - Mean (expected) train reward: 0.6412695050239563
+2025-07-15 14:39:14,178 - Mean (expected) val reward: 0.6376356482505798
+2025-07-15 14:39:14,292 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:39:14,341 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:15,235 - Finished with epoch 30
+2025-07-15 14:39:15,237 - Mean (expected) train reward: 0.6658545732498169
+2025-07-15 14:39:15,237 - Mean (expected) val reward: 0.6622607707977295
+2025-07-15 14:39:15,351 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:39:15,400 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:16,296 - Finished with epoch 35
+2025-07-15 14:39:16,297 - Mean (expected) train reward: 0.6872889399528503
+2025-07-15 14:39:16,298 - Mean (expected) val reward: 0.6837100386619568
+2025-07-15 14:39:16,413 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:39:16,462 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:17,367 - Finished with epoch 40
+2025-07-15 14:39:17,368 - Mean (expected) train reward: 0.7059528231620789
+2025-07-15 14:39:17,368 - Mean (expected) val reward: 0.7023731470108032
+2025-07-15 14:39:17,484 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:39:17,535 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:18,447 - Finished with epoch 45
+2025-07-15 14:39:18,449 - Mean (expected) train reward: 0.7223570942878723
+2025-07-15 14:39:18,449 - Mean (expected) val reward: 0.7187584042549133
+2025-07-15 14:39:18,566 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:39:18,617 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:19,548 - Finished with epoch 50
+2025-07-15 14:39:19,549 - Mean (expected) train reward: 0.7368127107620239
+2025-07-15 14:39:19,549 - Mean (expected) val reward: 0.7331791520118713
+2025-07-15 14:39:19,668 - Mean (realized) train reward: 0.9502563351398857
+2025-07-15 14:39:19,719 - Mean (realized) val reward: 0.950580997949419
+2025-07-15 14:39:19,719 - Starting trial 18
+2025-07-15 14:39:19,745 - Train cohort size: 34135
+2025-07-15 14:39:19,745 - Validation cohort size: 14630
+2025-07-15 14:39:19,760 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:39:22,107 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:39:22,955 - Finished with epoch 5
+2025-07-15 14:39:22,956 - Mean (expected) train reward: 0.563284158706665
+2025-07-15 14:39:22,956 - Mean (expected) val reward: 0.5997150540351868
+2025-07-15 14:39:23,068 - Mean (realized) train reward: 0.957228650944778
+2025-07-15 14:39:23,116 - Mean (realized) val reward: 0.9475051264524949
+2025-07-15 14:39:23,995 - Finished with epoch 10
+2025-07-15 14:39:23,997 - Mean (expected) train reward: 0.6012567281723022
+2025-07-15 14:39:23,997 - Mean (expected) val reward: 0.6338921189308167
+2025-07-15 14:39:24,108 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:24,158 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:25,056 - Finished with epoch 15
+2025-07-15 14:39:25,058 - Mean (expected) train reward: 0.6328939199447632
+2025-07-15 14:39:25,058 - Mean (expected) val reward: 0.662394106388092
+2025-07-15 14:39:25,170 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:25,219 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:26,112 - Finished with epoch 20
+2025-07-15 14:39:26,114 - Mean (expected) train reward: 0.6601223349571228
+2025-07-15 14:39:26,114 - Mean (expected) val reward: 0.6869491934776306
+2025-07-15 14:39:26,226 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:26,274 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:27,172 - Finished with epoch 25
+2025-07-15 14:39:27,174 - Mean (expected) train reward: 0.6834948062896729
+2025-07-15 14:39:27,174 - Mean (expected) val reward: 0.7080470323562622
+2025-07-15 14:39:27,288 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:27,337 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:28,233 - Finished with epoch 30
+2025-07-15 14:39:28,234 - Mean (expected) train reward: 0.7032418251037598
+2025-07-15 14:39:28,234 - Mean (expected) val reward: 0.725897490978241
+2025-07-15 14:39:28,350 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:28,399 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:29,313 - Finished with epoch 35
+2025-07-15 14:39:29,315 - Mean (expected) train reward: 0.7207580208778381
+2025-07-15 14:39:29,315 - Mean (expected) val reward: 0.7417494654655457
+2025-07-15 14:39:29,430 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:29,480 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:30,401 - Finished with epoch 40
+2025-07-15 14:39:30,403 - Mean (expected) train reward: 0.7361450791358948
+2025-07-15 14:39:30,403 - Mean (expected) val reward: 0.7556835412979126
+2025-07-15 14:39:30,519 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:30,569 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:31,490 - Finished with epoch 45
+2025-07-15 14:39:31,492 - Mean (expected) train reward: 0.7493149042129517
+2025-07-15 14:39:31,492 - Mean (expected) val reward: 0.7676261067390442
+2025-07-15 14:39:31,609 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:31,659 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:32,579 - Finished with epoch 50
+2025-07-15 14:39:32,580 - Mean (expected) train reward: 0.7615708708763123
+2025-07-15 14:39:32,581 - Mean (expected) val reward: 0.7787522077560425
+2025-07-15 14:39:32,699 - Mean (realized) train reward: 0.9511351984766369
+2025-07-15 14:39:32,749 - Mean (realized) val reward: 0.9487354750512645
+2025-07-15 14:39:32,750 - Starting trial 19
+2025-07-15 14:39:32,780 - Train cohort size: 34135
+2025-07-15 14:39:32,781 - Validation cohort size: 14630
+2025-07-15 14:39:32,799 - Running experiment for setting={'nothing': 0}
+2025-07-15 14:39:35,094 - {'num_epochs': 50, 'optimizer': 'adam', 'lr': 0.0001, 'reg_type': 'l2', 'lambda_reg': 0}
+2025-07-15 14:39:35,937 - Finished with epoch 5
+2025-07-15 14:39:35,941 - Mean (expected) train reward: 0.5761780142784119
+2025-07-15 14:39:35,941 - Mean (expected) val reward: 0.5628542900085449
+2025-07-15 14:39:36,053 - Mean (realized) train reward: 0.948938040134759
+2025-07-15 14:39:36,102 - Mean (realized) val reward: 0.9587149692412851
+2025-07-15 14:39:36,991 - Finished with epoch 10
+2025-07-15 14:39:36,993 - Mean (expected) train reward: 0.6097687482833862
+2025-07-15 14:39:36,993 - Mean (expected) val reward: 0.5976895689964294
+2025-07-15 14:39:37,104 - Mean (realized) train reward: 0.9499926761388604
+2025-07-15 14:39:37,152 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:38,039 - Finished with epoch 15
+2025-07-15 14:39:38,040 - Mean (expected) train reward: 0.6385093927383423
+2025-07-15 14:39:38,040 - Mean (expected) val reward: 0.627497673034668
+2025-07-15 14:39:38,154 - Mean (realized) train reward: 0.9500805624725355
+2025-07-15 14:39:38,203 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:39,155 - Finished with epoch 20
+2025-07-15 14:39:39,157 - Mean (expected) train reward: 0.6628482937812805
+2025-07-15 14:39:39,157 - Mean (expected) val reward: 0.6527358889579773
+2025-07-15 14:39:39,270 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:39:39,319 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:40,230 - Finished with epoch 25
+2025-07-15 14:39:40,231 - Mean (expected) train reward: 0.6844227910041809
+2025-07-15 14:39:40,231 - Mean (expected) val reward: 0.6751009225845337
+2025-07-15 14:39:40,347 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:39:40,396 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:41,318 - Finished with epoch 30
+2025-07-15 14:39:41,319 - Mean (expected) train reward: 0.7028511762619019
+2025-07-15 14:39:41,320 - Mean (expected) val reward: 0.6942077279090881
+2025-07-15 14:39:41,437 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:39:41,487 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:42,409 - Finished with epoch 35
+2025-07-15 14:39:42,410 - Mean (expected) train reward: 0.7189472913742065
+2025-07-15 14:39:42,411 - Mean (expected) val reward: 0.7108863592147827
+2025-07-15 14:39:42,526 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:39:42,576 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:43,499 - Finished with epoch 40
+2025-07-15 14:39:43,500 - Mean (expected) train reward: 0.7327683568000793
+2025-07-15 14:39:43,501 - Mean (expected) val reward: 0.7252073287963867
+2025-07-15 14:39:43,619 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:39:43,670 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:44,601 - Finished with epoch 45
+2025-07-15 14:39:44,602 - Mean (expected) train reward: 0.7453529834747314
+2025-07-15 14:39:44,602 - Mean (expected) val reward: 0.7382473349571228
+2025-07-15 14:39:44,720 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:39:44,771 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:45,706 - Finished with epoch 50
+2025-07-15 14:39:45,707 - Mean (expected) train reward: 0.756722629070282
+2025-07-15 14:39:45,707 - Mean (expected) val reward: 0.7500248551368713
+2025-07-15 14:39:45,826 - Mean (realized) train reward: 0.9501684488062107
+2025-07-15 14:39:45,878 - Mean (realized) val reward: 0.9509911141490088
+2025-07-15 14:39:45,883 - Storing primary outcomes...
+2025-07-15 14:39:46,008 - Storing primary outcomes...
+2025-07-15 14:39:46,063 - Storing primary outcomes...
+2025-07-15 14:39:46,193 - Storing primary outcomes...
+2025-07-15 14:39:46,249 - Storing primary outcomes...
+2025-07-15 14:39:46,371 - Storing primary outcomes...
+2025-07-15 14:39:46,426 - Storing primary outcomes...
+2025-07-15 14:39:46,548 - Storing primary outcomes...
+2025-07-15 14:39:46,604 - Storing primary outcomes...
+2025-07-15 14:39:46,727 - Storing primary outcomes...
+2025-07-15 14:39:46,782 - Storing primary outcomes...
+2025-07-15 14:39:46,905 - Storing primary outcomes...
+2025-07-15 14:39:46,961 - Storing primary outcomes...
+2025-07-15 14:39:47,087 - Storing primary outcomes...
+2025-07-15 14:39:47,144 - Storing primary outcomes...
+2025-07-15 14:39:47,267 - Storing primary outcomes...
+2025-07-15 14:39:47,322 - Storing primary outcomes...
+2025-07-15 14:39:47,452 - Storing primary outcomes...
+2025-07-15 14:39:47,508 - Storing primary outcomes...
+2025-07-15 14:39:47,631 - Storing primary outcomes...
+2025-07-15 14:39:47,687 - Storing primary outcomes...
+2025-07-15 14:39:47,813 - Storing primary outcomes...
+2025-07-15 14:39:47,870 - Storing primary outcomes...
+2025-07-15 14:39:47,992 - Storing primary outcomes...
+2025-07-15 14:39:48,048 - Storing primary outcomes...
+2025-07-15 14:39:48,171 - Storing primary outcomes...
+2025-07-15 14:39:48,227 - Storing primary outcomes...
+2025-07-15 14:39:48,352 - Storing primary outcomes...
+2025-07-15 14:39:48,408 - Storing primary outcomes...
+2025-07-15 14:39:48,535 - Storing primary outcomes...
+2025-07-15 14:39:48,593 - Storing primary outcomes...
+2025-07-15 14:39:48,719 - Storing primary outcomes...
+2025-07-15 14:39:48,776 - Storing primary outcomes...
+2025-07-15 14:39:48,902 - Storing primary outcomes...
+2025-07-15 14:39:48,958 - Storing primary outcomes...
+2025-07-15 14:39:49,083 - Storing primary outcomes...
+2025-07-15 14:39:49,140 - Storing primary outcomes...
+2025-07-15 14:39:49,265 - Storing primary outcomes...
+2025-07-15 14:39:49,321 - Storing primary outcomes...
+2025-07-15 14:39:49,446 - Storing primary outcomes...
+2025-07-15 14:39:49,505 - Completed calculating means
+2025-07-15 14:39:49,505 - Completed calculating means

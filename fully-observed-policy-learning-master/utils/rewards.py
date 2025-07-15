@@ -15,14 +15,24 @@ def get_reward_for_example(outcomes, reward_params, include_defer=False):
     '''
     
     # Mapping of action to corresponding reward for specified example
-    actions = [action for action in list(outcomes.index) if action != 'example_id' and action != 'prescription']
+    actions = [action for action in list(outcomes.index) if action != 'example_id']
     
     reward_dict = {}
 
     for action in actions:
-        reward_dict[action] = outcomes[action]
+        if(action == "has_tb" and outcomes[action] == 1):
+            reward_dict[action] = 120
+        elif(action == "has_tb" and outcomes[action] == 0):
+            reward_dict[action] = -2
+        elif(action == "has_no_tb" and outcomes[action] == 1):
+            reward_dict[action] = 0
+        elif(action == "has_no_tb" and outcomes[action] == 0):
+            reward_dict[action] = -2
 
     '''
+    # Mapping of action to corresponding reward for specified example
+    actions = [action for action in list(outcomes.index) if action != 'example_id' and action != 'prescription']
+
     # Example code for reward construction in antibiotic prescription setting:
     reward_dict = {}
     
