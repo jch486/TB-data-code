@@ -214,7 +214,7 @@ def main():
     ##### PART 7: balance dataset by removing some patients with no TB from outcomes #####
     if not os.path.exists(outcomes_undersampled_fn):
         outcomes_tb = outcomes[outcomes['has_tb'] == 1]
-        outcomes_no_tb = outcomes[outcomes['has_no_tb'] == 1].sample(frac=len(outcomes_tb)/len(outcomes), random_state=42)
+        outcomes_no_tb = outcomes[outcomes['has_no_tb'] == 1].sample(n=len(outcomes_tb), random_state=42)
         outcomes_undersampled = pd.concat([outcomes_no_tb, outcomes_tb], ignore_index=True)
         outcomes_undersampled.to_csv(outcomes_undersampled_fn, index=False)
     ##### PART 7 #####
