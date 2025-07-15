@@ -1,0 +1,6 @@
+2025-07-14 23:13:58,043 - Namespace(exp_name='my_experiment', mode='direct', num_trials=20, features_path='other_data/features_formatted_undersampled.csv', outcomes_path='other_data/outcomes_undersampled.csv', metadata_path='other_data/metadata.csv', validate=True, test_features_path=None, test_outcomes_path=None, best_models_path=None, best_hyperparams_path=None, predictions_path=None, threshold_combos_path=None, best_thresholds_path=None, threshold_selection_config_path=None, model_params_config_path=None, reward_params_path='reward_space.json', defer=False)
+2025-07-14 23:13:58,043 - Reading in data...
+2025-07-14 23:13:58,113 - Train cohort size: 48765
+2025-07-14 23:13:58,132 - Starting trial 0
+2025-07-14 23:13:58,165 - Train cohort size: 34135
+2025-07-14 23:13:58,165 - Validation cohort size: 14630

@@ -32,8 +32,8 @@ def convert_to_vector(pat2vec_model, dx_grouped):
     
     return vectors_grouped
 
-def create_feature_vectors(vectors_grouped, timespan, gamma):
-    features_vectors = pd.DataFrame(columns=['patient_id', 'date', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10'])
+def create_features(vectors_grouped, timespan, gamma):
+    features = pd.DataFrame(columns=['patient_id', 'date', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10'])
     # get first and last dates in dataset
     date_start = vectors_grouped['date'].to_numpy().min()
     date_end = vectors_grouped['date'].to_numpy().max()
@@ -45,7 +45,7 @@ def create_feature_vectors(vectors_grouped, timespan, gamma):
         month_start = month_end - timespan
         curr_patient = curr_id_date[0]
         # overlap = if there is overlap between the 30-day window before this visit and any dates in the final feature vector for this patient
-        overlap = np.isin(np.arange(month_end - 30, month_end), features_vectors[features_vectors['patient_id'] == curr_patient]['date'].values).any()
+        overlap = np.isin(np.arange(month_end - 30, month_end), features[features['patient_id'] == curr_patient]['date'].values).any()
         # if the timespan before the current visit date is within the dataset's range and there is no overlap
         if(month_start >= date_start and month_end <= date_end and not overlap):
             # get all vectors in the timespan before the current visit date, for the specified patient
@@ -86,18 +86,18 @@ def create_feature_vectors(vectors_grouped, timespan, gamma):
                                         'f10': [np.sum(curr_vs['f10'].to_numpy(), axis=0)], })
 
                 # add to dataframe
-                frames = [df for df in [features_vectors, total_vs] if not df.empty]
-                features_vectors = pd.concat(frames, ignore_index=True)
+                frames = [df for df in [features, total_vs] if not df.empty]
+                features = pd.concat(frames, ignore_index=True)
     
-    return features_vectors
+    return features
 
 def main():
     # set up file paths
     all_icd_10_fn = os.path.join('other_data', 'all_icd_10.csv')
     dx_grouped_fn = os.path.join('other_data', 'dx_grouped.csv')
     vectors_grouped_fn = os.path.join('other_data', 'vectors_grouped.pkl')
-    features_vectors_fn = os.path.join('other_data', 'features_vectors.csv')
-    features_vectors_formatted_fn = os.path.join('other_data', 'features_vectors_formatted.csv')
+    features_fn = os.path.join('other_data', 'features.csv')
+    features_formatted_fn = os.path.join('other_data', 'features_formatted.csv')
     
     # load data from csv file
     all_icd_10_df = pd.read_csv(all_icd_10_fn)
@@ -123,18 +123,18 @@ def main():
     ##### PART 2 #####
 
     ##### PART 3: combine vectors in the thirty days before each visit #####
-    if not os.path.exists(features_vectors_fn):
+    if not os.path.exists(features_fn):
         vectors_grouped = pd.read_pickle(vectors_grouped_fn)
-        features_vectors = create_feature_vectors(vectors_grouped, 30, 0.95)
-        features_vectors.to_csv(features_vectors_fn, index=False)
+        features = create_features(vectors_grouped, 30, 0.95)
+        features.to_csv(features_fn, index=False)
     ##### PART 3 #####
 
     ##### PART 4: vector formatting #####
-    if not os.path.exists(features_vectors_formatted_fn):
-        features_vectors = pd.read_csv(features_vectors_fn)
-        features_vectors_formatted = features_vectors
-        features_vectors_formatted['example_id']= features_vectors_formatted[['patient_id', 'date']].values.tolist()
-        features_vectors_formatted[['example_id', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10']].to_csv(features_vectors_formatted_fn, index=False)
+    if not os.path.exists(features_formatted_fn):
+        features = pd.read_csv(features_fn)
+        features_formatted = features
+        features_formatted['example_id']= features_formatted[['patient_id', 'date']].values.tolist()
+        features_formatted[['example_id', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10']].to_csv(features_formatted_fn, index=False)
     ##### PART 4 #####
 
 if __name__ == '__main__':

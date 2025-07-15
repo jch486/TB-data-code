@@ -7,8 +7,8 @@ set -e
 EXP_NAME="my_experiment"
 
 # Set paths to required inputs
-FEATURES_PATH="other_data/features_vectors_formatted.csv"
-OUTCOMES_PATH="other_data/outcomes.csv"
+FEATURES_PATH="other_data/features_formatted_undersampled.csv"
+OUTCOMES_PATH="other_data/outcomes_undersampled.csv"
 METADATA_PATH="other_data/metadata.csv"
 
 REWARD_PARAMS_PATH="reward_space.json"                     # For direct or exp_reward_max mode
