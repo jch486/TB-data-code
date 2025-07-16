@@ -1,0 +1,6 @@
+2025-07-15 15:03:36,632 - Namespace(exp_name='my_experiment', mode='direct', num_trials=20, features_path='other_data/features_formatted.csv', outcomes_path='other_data/outcomes.csv', metadata_path='other_data/metadata.csv', validate=True, test_features_path=None, test_outcomes_path=None, best_models_path=None, best_hyperparams_path=None, predictions_path=None, threshold_combos_path=None, best_thresholds_path=None, threshold_selection_config_path=None, model_params_config_path=None, reward_params_path='reward_space.json', defer=False)
+2025-07-15 15:03:36,632 - Reading in data...
+2025-07-15 15:03:36,707 - Train cohort size: 48765
+2025-07-15 15:03:36,726 - Starting trial 0
+2025-07-15 15:03:36,749 - Train TB proportion: 0.01652263073092134
+2025-07-15 15:03:36,750 - Val TB proportion: 0.016541353383458645
