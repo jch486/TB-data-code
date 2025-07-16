@@ -2,7 +2,6 @@ import pandas as pd
 import os
 import numpy as np
 import math
-from gensim.models.doc2vec import Doc2Vec
 
 # convert all icd-9 diagnoses in all_dx_visits_df into icd-10
 def icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df):
@@ -34,26 +33,28 @@ def group_patient_date(all_icd_10_df):
     return all_icd_10_df.groupby(['patient_id', 'date'])['dx'].agg(', '.join).reset_index()
 
 # create grouped vectors from grouped diagnoses
-def convert_to_vector(pat2vec_model, dx_grouped):
+def convert_to_vector(icd_10_embedding, dx_grouped):
     vectors_grouped = pd.DataFrame()
 
     for row in dx_grouped.itertuples(index=False):
         patient_id = row[0]
         date = row[1]
         dx = row[2]
-        new_vect = pat2vec_model.infer_vector(dx.split(", "))
-        new_row = pd.DataFrame({'patient_id': [patient_id], 'date': [date]})
-        new_row['f1'] = new_vect[0]
-        new_row['f2'] = new_vect[1]
-        new_row['f3'] = new_vect[2]
-        new_row['f4'] = new_vect[3]
-        new_row['f5'] = new_vect[4]
-        new_row['f6'] = new_vect[5]
-        new_row['f7'] = new_vect[6]
-        new_row['f8'] = new_vect[7]
-        new_row['f9'] = new_vect[8]
-        new_row['f10'] = new_vect[9]
-        vectors_grouped = pd.concat([vectors_grouped, new_row], ignore_index=True)
+        dx_conversions = icd_10_embedding[icd_10_embedding['code'].isin(dx.split(", "))]
+
+        if(not dx_conversions.empty):
+            new_row = pd.DataFrame({'patient_id': [patient_id], 'date': [date]})
+            new_row['f1'] = [np.mean(dx_conversions['V1'].to_numpy(), axis=0)]
+            new_row['f2'] = [np.mean(dx_conversions['V2'].to_numpy(), axis=0)]
+            new_row['f3'] = [np.mean(dx_conversions['V3'].to_numpy(), axis=0)]
+            new_row['f4'] = [np.mean(dx_conversions['V4'].to_numpy(), axis=0)]
+            new_row['f5'] = [np.mean(dx_conversions['V5'].to_numpy(), axis=0)]
+            new_row['f6'] = [np.mean(dx_conversions['V6'].to_numpy(), axis=0)]
+            new_row['f7'] = [np.mean(dx_conversions['V7'].to_numpy(), axis=0)]
+            new_row['f8'] = [np.mean(dx_conversions['V8'].to_numpy(), axis=0)]
+            new_row['f9'] = [np.mean(dx_conversions['V9'].to_numpy(), axis=0)]
+            new_row['f10'] = [np.mean(dx_conversions['V10'].to_numpy(), axis=0)]
+            vectors_grouped = pd.concat([vectors_grouped, new_row], ignore_index=True)
     
     return vectors_grouped
 
@@ -99,16 +100,16 @@ def create_features(vectors_grouped, timespan, gamma):
 
                 # add discounted vectors together
                 total_vs = pd.DataFrame({'patient_id': [curr_patient], 'date': [month_end], 
-                                        'f1': [np.sum(curr_vs['f1'].to_numpy(), axis=0)], 
-                                        'f2': [np.sum(curr_vs['f2'].to_numpy(), axis=0)], 
-                                        'f3': [np.sum(curr_vs['f3'].to_numpy(), axis=0)], 
-                                        'f4': [np.sum(curr_vs['f4'].to_numpy(), axis=0)], 
-                                        'f5': [np.sum(curr_vs['f5'].to_numpy(), axis=0)], 
-                                        'f6': [np.sum(curr_vs['f6'].to_numpy(), axis=0)], 
-                                        'f7': [np.sum(curr_vs['f7'].to_numpy(), axis=0)], 
-                                        'f8': [np.sum(curr_vs['f8'].to_numpy(), axis=0)], 
-                                        'f9': [np.sum(curr_vs['f9'].to_numpy(), axis=0)], 
-                                        'f10': [np.sum(curr_vs['f10'].to_numpy(), axis=0)], })
+                                        'f1': [np.mean(curr_vs['f1'].to_numpy(), axis=0)], 
+                                        'f2': [np.mean(curr_vs['f2'].to_numpy(), axis=0)], 
+                                        'f3': [np.mean(curr_vs['f3'].to_numpy(), axis=0)], 
+                                        'f4': [np.mean(curr_vs['f4'].to_numpy(), axis=0)], 
+                                        'f5': [np.mean(curr_vs['f5'].to_numpy(), axis=0)], 
+                                        'f6': [np.mean(curr_vs['f6'].to_numpy(), axis=0)], 
+                                        'f7': [np.mean(curr_vs['f7'].to_numpy(), axis=0)], 
+                                        'f8': [np.mean(curr_vs['f8'].to_numpy(), axis=0)], 
+                                        'f9': [np.mean(curr_vs['f9'].to_numpy(), axis=0)], 
+                                        'f10': [np.mean(curr_vs['f10'].to_numpy(), axis=0)], })
 
                 # add to dataframe
                 frames = [df for df in [features, total_vs] if not df.empty]
@@ -143,9 +144,9 @@ def main():
     all_dx_visits_fn = os.path.join('subsample', 'all_dx_visits.csv')
     all_dx_visits_df = pd.read_csv(all_dx_visits_fn)
     all_icd_10_fn = os.path.join('other_data', 'all_icd_10.csv')
-    all_icd_10_df = pd.read_csv(all_icd_10_fn)
     dx_grouped_fn = os.path.join('other_data', 'dx_grouped.csv')
-    pat2vec_dim10_fn = os.path.join('converters', 'pat2vec_dim10.model')
+    icd_10_embedding_fn = os.path.join('converters', 'icd-10-cm-2022-embedding.csv')
+    icd_10_embedding = pd.read_csv(icd_10_embedding_fn)
     vectors_grouped_fn = os.path.join('other_data', 'vectors_grouped.pkl')
     features_fn = os.path.join('other_data', 'features.csv')
     features_formatted_fn = os.path.join('other_data', 'features_formatted.csv')
@@ -158,9 +159,13 @@ def main():
 
     ##### PART 1: convert all icd-9 diagnoses in all_dx_visits_df into icd-10 #####
     if not os.path.exists(all_icd_10_fn):
-        all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
+        # all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
+        # only using ICD-10 codes
+        all_icd_10 = all_dx_visits_df[all_dx_visits_df['dx_ver'] == 10]
         all_icd_10.to_csv(all_icd_10_fn, index=False)
     ##### PART 1 #####
+
+    all_icd_10_df = pd.read_csv(all_icd_10_fn)
 
     ##### PART 2: group diagnoses by same patient id and date #####
     if not os.path.exists(dx_grouped_fn):
@@ -172,13 +177,11 @@ def main():
     dx_grouped = pd.read_csv(dx_grouped_fn)
 
     ##### PART 3: convert grouped diagnoses to vectors #####
+    # using: https://doi.org/10.1186/s12859-023-05597-2
+    # https://github.com/kaneplusplus/icd-10-cm-embedding
     if not os.path.exists(vectors_grouped_fn):
-        # load Pat2Vec Model (which will convert list of diagnoses into 10d vector)
-        # https://ai.jmir.org/2023/1/e40755
-        # https://huggingface.co/zidatasciencelab/Pat2Vec
-        pat2vec_model = Doc2Vec.load(pat2vec_dim10_fn)
         # create grouped vectors from grouped diagnoses
-        vectors_grouped = convert_to_vector(pat2vec_model, dx_grouped)
+        vectors_grouped = convert_to_vector(icd_10_embedding, dx_grouped)
         # save with pickle (not using csv since it converts vectors to strings)
         vectors_grouped.to_pickle(vectors_grouped_fn)
     ##### PART 3 #####
@@ -211,6 +214,7 @@ def main():
 
     outcomes = pd.read_csv(outcomes_fn)
 
+    '''
     ##### PART 7: balance dataset by removing some patients with no TB from outcomes #####
     if not os.path.exists(outcomes_undersampled_fn):
         outcomes_tb = outcomes[outcomes['has_tb'] == 1]
@@ -226,6 +230,7 @@ def main():
         features_formatted_undersampled = features_formatted[features_formatted['example_id'].isin(outcomes_undersampled['example_id'])]
         features_formatted_undersampled.to_csv(features_formatted_undersampled_fn, index=False)
     ##### PART 8 #####
+    '''
 
     ##### PART 9: construct metadata #####
     if not os.path.exists(metadata_fn):
