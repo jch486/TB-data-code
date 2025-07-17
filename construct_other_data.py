@@ -107,8 +107,8 @@ def create_features(vectors_grouped, timespan, gamma):
         month_end = curr_id_date[1]
         month_start = month_end - timespan
         curr_patient = curr_id_date[0]
-        # overlap = if there is overlap between the 30-day window before this visit and any dates in the final feature vector for this patient
-        overlap = np.isin(np.arange(month_end - 30, month_end), features[features['patient_id'] == curr_patient]['date'].values).any()
+        # overlap = if there is overlap between the window before this visit and any dates in the final feature vector for this patient
+        overlap = np.isin(np.arange(month_end - timespan, month_end), features[features['patient_id'] == curr_patient]['date'].values).any()
         # if the timespan before the current visit date is within the dataset's range and there is no overlap
         if(month_start >= date_start and month_end <= date_end and not overlap):
             # get all vectors in the timespan before the current visit date, for the specified patient
@@ -196,9 +196,7 @@ def main():
 
     ##### PART 1: convert all icd-9 diagnoses in all_dx_visits_df into icd-10 #####
     if not os.path.exists(all_icd_10_fn):
-        # all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
-        # only using ICD-10 codes
-        all_icd_10 = all_dx_visits_df[all_dx_visits_df['dx_ver'] == 10]
+        all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
         all_icd_10.to_csv(all_icd_10_fn, index=False)
     ##### PART 1 #####
 
@@ -251,6 +249,7 @@ def main():
 
     outcomes = pd.read_csv(outcomes_fn)
 
+    '''
     ##### PART N/A: construct lists of diagnoses 30 days before each visit and combine with outcomes #####
     if not os.path.exists("other_data/dx_features.csv"):
         dx_features = create_30_day_dx(dx_grouped, outcomes)
@@ -261,7 +260,7 @@ def main():
     dx_features_outcomes.to_csv("other_data/dx_features_outcomes.csv", index=False)
     ##### PART N/A #####
 
-    '''
+    
     ##### PART 7: balance dataset by removing some patients with no TB from outcomes #####
     if not os.path.exists(outcomes_undersampled_fn):
         outcomes_tb = outcomes[outcomes['has_tb'] == 1]
