@@ -58,6 +58,43 @@ def convert_to_vector(icd_10_embedding, dx_grouped):
     
     return vectors_grouped
 
+def create_30_day_dx(dx_grouped, outcomes):
+    features = pd.DataFrame(columns=['patient_id', 'date', 'dx'])
+    # get first and last dates in dataset
+    date_start = dx_grouped['date'].to_numpy().min()
+    date_end = dx_grouped['date'].to_numpy().max()
+
+    # for each patient and visit date combo
+    for curr_id_date in dx_grouped[['patient_id', 'date']].drop_duplicates().itertuples(index=False):
+        # month_end = visit date
+        month_end = curr_id_date[1]
+        month_start = month_end - 30
+        curr_patient = curr_id_date[0]
+        # overlap = if there is overlap between the 30-day window before this visit and any dates in the final feature vector for this patient
+        overlap = np.isin(np.arange(month_end - 30, month_end), features[features['patient_id'] == curr_patient]['date'].values).any()
+        # if the timespan before the current visit date is within the dataset's range and there is no overlap
+        if(month_start >= date_start and month_end <= date_end and not overlap):
+            # get all vectors in the timespan before the current visit date, for the specified patient
+            curr_vs = dx_grouped.loc[
+                (dx_grouped['date'] >= month_start) &
+                (dx_grouped['date'] < month_end) &
+                (dx_grouped['patient_id'] == curr_patient)
+            ].copy()
+
+            # proceed with calculating feature vector if there are vectors to aggregate
+            # 30 days of no diagnoses before a visit = no vectors to aggregate
+            if(len(curr_vs) != 0):
+                all_dx_codes = ', '.join(curr_vs['dx']).split(', ')
+                all_dx_codes = list(set(all_dx_codes))
+                total_vs = pd.DataFrame({'patient_id': curr_patient, 'date': month_end, 
+                                        'dx': [all_dx_codes]})
+
+                # add to dataframe
+                features = pd.concat([features, total_vs], ignore_index=True)
+    
+    features['example_id']= features[['patient_id', 'date']].values.tolist()
+    return features[["example_id", "dx"]]
+
 def create_features(vectors_grouped, timespan, gamma):
     features = pd.DataFrame(columns=['patient_id', 'date', 'f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10'])
     # get first and last dates in dataset
@@ -213,6 +250,16 @@ def main():
     ##### PART 6 #####
 
     outcomes = pd.read_csv(outcomes_fn)
+
+    ##### PART N/A: construct lists of diagnoses 30 days before each visit and combine with outcomes #####
+    if not os.path.exists("other_data/dx_features.csv"):
+        dx_features = create_30_day_dx(dx_grouped, outcomes)
+        dx_features.to_csv("other_data/dx_features.csv", index=False)
+
+    dx_features = pd.read_csv("other_data/dx_features.csv")
+    dx_features_outcomes = dx_features.merge(outcomes, on='example_id')
+    dx_features_outcomes.to_csv("other_data/dx_features_outcomes.csv", index=False)
+    ##### PART N/A #####
 
     '''
     ##### PART 7: balance dataset by removing some patients with no TB from outcomes #####
