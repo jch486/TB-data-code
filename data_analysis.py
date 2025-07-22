@@ -214,6 +214,24 @@ def find_most_common_ICD_codes(index_tb_date_df, all_dx_visits_df, icd_labels_df
         print(only_icd10.iloc[i:i+1])
         print("description:", icd_lookup(icd_labels_df, only_icd10.index[i], 10), "\n")
 
+# determine the most common diagnoses recorded before a visit with/out a TB diagnosis
+def find_most_common_dx(dx_features_outcomes, icd_labels_df):
+    # split into with TB and without TB tables and sort by counts of dx
+    with_TB = dx_features_outcomes[dx_features_outcomes['has_tb'] == 1]['dx'].explode().value_counts()
+    without_TB = dx_features_outcomes[dx_features_outcomes['has_no_tb'] == 1]['dx'].explode().value_counts()
+    total_with_TB = with_TB.sum()
+    total_without_TB = without_TB.sum()
+    
+    print("Most common dx in the 7 days before a visit, with TB:")
+    for i in range(0,10):
+        print("Code:", with_TB.index[i],", Description:", icd_lookup(icd_labels_df, with_TB.index[i], 10))
+        print("Percent:", round(100*with_TB.iloc[i]/total_with_TB, 3),"%\n")
+    
+    print("\nMost common dx in the 7 days before a visit, without TB:")
+    for i in range(0,10):
+        print("Code:", without_TB.index[i],", Description:", icd_lookup(icd_labels_df, without_TB.index[i], 10))
+        print("Percent:",round(100*without_TB.iloc[i]/total_without_TB, 3),"%\n")
+
 # plot number of visits per patient for any one-month span
 # and find the average
 def avg_month_visits(all_dx_visits_df, all_proc_visits_df):
@@ -396,6 +414,10 @@ def main():
     # determine the most common ICD codes (separately for ICD-9 and ICD-10) 
     # recorded during the five visits preceding a TB diagnosis.
     # find_most_common_ICD_codes(index_tb_date_df, all_dx_visits_df, icd_labels_df)
+
+    # find most common diagnoses before visit with/without TB diagnosis
+    dx_features_outcomes = pd.read_pickle("other_data/dx_features_outcomes.pkl")
+    find_most_common_dx(dx_features_outcomes, icd_labels_df)
 
     # plot number of diagnosis + procedure visits per patient for any one-month span
     # and find the average

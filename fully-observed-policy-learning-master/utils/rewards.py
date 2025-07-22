@@ -21,13 +21,13 @@ def get_reward_for_example(outcomes, reward_params, include_defer=False):
 
     for action in actions:
         if(action == "has_tb" and outcomes[action] == 1):
-            reward_dict[action] = 120
+            reward_dict[action] = reward_params['TP_reward']
         elif(action == "has_tb" and outcomes[action] == 0):
-            reward_dict[action] = -2
-        elif(action == "has_no_tb" and outcomes[action] == 1):
             reward_dict[action] = 0
+        elif(action == "has_no_tb" and outcomes[action] == 1):
+            reward_dict[action] = 1
         elif(action == "has_no_tb" and outcomes[action] == 0):
-            reward_dict[action] = -2
+            reward_dict[action] = 0
 
     '''
     # Mapping of action to corresponding reward for specified example

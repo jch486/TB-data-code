@@ -28,16 +28,17 @@ def main():
     eigenvalues = eigenvalues[idx]
     eigenvectors = eigenvectors[:, idx]
 
-    # Project onto top 2 components
+    # Project onto #3 and #4 components
     top2 = eigenvectors[:, :2]
+    next2 = eigenvectors[:, 3:5]
     X_projected = X_centered @ top2
 
     # --- Step 5: PCA Scatter Plot ---
     plt.figure(figsize=(8, 6))
     plt.scatter(X_projected[y==0, 0], X_projected[y==0, 1], alpha=0.6, label='No TB')
     plt.scatter(X_projected[y==1, 0], X_projected[y==1, 1], alpha=0.6, label='TB')
-    plt.xlabel("PC1")
-    plt.ylabel("PC2")
+    plt.xlabel("PC3")
+    plt.ylabel("PC4")
     plt.title("PCA Projection of Patient Vectors")
     plt.legend()
     plt.grid(True)
