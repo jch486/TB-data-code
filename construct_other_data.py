@@ -50,7 +50,7 @@ def convert_to_vector(icd_10_embedding, dx_grouped, dimensions):
     
     return vectors_grouped
 
-def convert_to_vector_ICD(dx_grouped, codes):
+def convert_to_vector_ICD(dx_grouped, codes, dimensions):
     vectors_grouped = pd.DataFrame()
 
     for row in dx_grouped.itertuples(index=False):
@@ -59,8 +59,79 @@ def convert_to_vector_ICD(dx_grouped, codes):
         dx = row[2]
 
         new_row = pd.DataFrame({'patient_id': [patient_id], 'date': [date]})
-        for i in range(1, 11):
+        for i in range(1, dimensions + 1):
             new_row[f'f{i}'] = int(codes[i - 1] in dx.split(", "))
+
+        vectors_grouped = pd.concat([vectors_grouped, new_row], ignore_index=True)
+    
+    return vectors_grouped
+
+def convert_to_vector_one_hot(dx_grouped):
+    groups = []
+    # group1 = A00 to B99; Certain infectious and parasitic diseases
+    groups.append([f"A{i}" for i in range(10)] + [f"B{i}" for i in range(10)])
+    # group2 = C00 to D49; Neoplasms
+    groups.append([f"C{i}" for i in range(10)] + [f"D{i}" for i in range(5)])
+    # group3 = D50 to D89; Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism
+    groups.append([f"D{i}" for i in range(5, 9)])
+    # group4 = E00 to E89; Endocrine, nutritional and metabolic diseases
+    groups.append([f"E{i}" for i in range(9)])
+    # group5 = F01 to F99; Mental, Behavioral and Neurodevelopmental disorders
+    groups.append([f"F{i}" for i in range(10)])
+    # group6 = G00 to G99; Diseases of the nervous system
+    groups.append([f"G{i}" for i in range(10)])
+    # group7 = H00 to H59; Diseases of the eye and adnexa
+    groups.append([f"H{i}" for i in range(6)])
+    # group8 = H60 to H95; Diseases of the ear and mastoid process
+    groups.append([f"H{i}" for i in range(6, 10)])
+    # group9 = I00 to I99; Diseases of the circulatory system
+    groups.append([f"I{i}" for i in range(10)])
+    # group10 = J00 to J99; Diseases of the respiratory system
+    groups.append([f"J{i}" for i in range(10)])
+    # group11 = K00 to K95; Diseases of the digestive system
+    groups.append([f"K{i}" for i in range(10)])
+    # group12 = L00 to L99; Diseases of the skin and subcutaneous tissue
+    groups.append([f"L{i}" for i in range(10)])
+    # group13 = M00 to M99; Diseases of the musculoskeletal system and connective tissue
+    groups.append([f"M{i}" for i in range(10)])
+    # group14 = N00 to N99; Diseases of the genitourinary system
+    groups.append([f"N{i}" for i in range(10)])
+    # group15 = O00 to O9A; Pregnancy, childbirth and the puerperium
+    groups.append([f"O{i}" for i in range(10)])
+    # group16 = P00 to P96; Certain conditions originating in the perinatal period
+    groups.append([f"P{i}" for i in range(10)])
+    # group17 = Q00 to Q99; Congenital malformations, deformations and chromosomal abnormalities
+    groups.append([f"Q{i}" for i in range(10)])
+    # group18 = R00 to R99; Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified
+    groups.append([f"R{i}" for i in range(10)])
+    # group19 = S00 to T88; Injury, poisoning and certain other consequences of external causes
+    groups.append([f"S{i}" for i in range(10)] + [f"T{i}" for i in range(9)])
+    # group20 = U00 to U85; Codes for special purposes
+    groups.append([f"U{i}" for i in range(9)])
+    # group21 = V00 to Y99; External causes of morbidity
+    groups.append([f"V{i}" for i in range(10)] + [f"W{i}" for i in range(10)] + [f"X{i}" for i in range(10)] + [f"Y{i}" for i in range(10)])
+    # group22 = Z00 to Z99; Factors influencing health status and contact with health services
+    groups.append([f"Z{i}" for i in range(10)])
+
+    vectors_grouped = pd.DataFrame()
+
+    # for each patient and visit date combo
+    for row in dx_grouped.itertuples(index=False):
+        patient_id = row[0]
+        date = row[1]
+        dx = row[2]
+
+        new_row = pd.DataFrame({'patient_id': [patient_id], 'date': [date]})
+        row_vector = np.zeros((22,), dtype=int)
+        # for each ICD code for a patient on a date
+        for code in dx.split(", "):
+            # for each binary representation of an ICD chapter
+            for i in range(0, 22):
+                # ex: row_vector[0] += code[:2] in group1
+                row_vector[i] += int(code[:2] in groups[i])
+
+        for i in range(1, 23):
+            new_row[f"f{i}"] = row_vector[i - 1]
 
         vectors_grouped = pd.concat([vectors_grouped, new_row], ignore_index=True)
     
@@ -200,7 +271,7 @@ def main():
     features_formatted_undersampled_fn = os.path.join('other_data', 'features_formatted_undersampled.csv')
 
     # number of dimensions used in vector embedding
-    dimensions = 10
+    dimensions = 22
 
     ##### PART 1: convert all icd-9 diagnoses in all_dx_visits_df into icd-10 #####
     if not os.path.exists(all_icd_10_fn):
@@ -226,8 +297,10 @@ def main():
         # create grouped vectors from grouped diagnoses
         # vectors_grouped = convert_to_vector(icd_10_embedding_10d, dx_grouped, dimensions)
         top_ten_codes_30_days = ["A150", "I10", "J449", "J189", "R079", "E119", "J984", "E785", "R0602", "A1801"]
+        top_codes_30_days_trimmed = ["A150", "J189", "J984", "R0602", "A1801", "M545", "R0600", "R05", "R222", "Z0000", "R0609", "R0689", "R0683", "R063", "Z79891", "Z23", "E039", "Z00129", "K219", "I509"]
         top_ten_codes_7_days = ["A150", "Z00129", "I10", "Z0000", "J449", "J189", "R079", "Z23", "I2510", "A1801"]
-        vectors_grouped = convert_to_vector_ICD(dx_grouped, top_ten_codes_30_days)
+        # vectors_grouped = convert_to_vector_ICD(dx_grouped, top_codes_30_days_trimmed, dimensions)
+        vectors_grouped = convert_to_vector_one_hot(dx_grouped)
         # save with pickle (not using csv since it converts vectors to strings)
         vectors_grouped.to_pickle(vectors_grouped_fn)
     ##### PART 3 #####
@@ -264,7 +337,7 @@ def main():
     
     ##### PART N/A: construct lists of diagnoses a certain timespan before each visit and combine with outcomes #####
     if not os.path.exists("other_data/dx_features.pkl"):
-        dx_features = create_dx_features(dx_grouped, 7)
+        dx_features = create_dx_features(dx_grouped, 30)
         dx_features.to_pickle("other_data/dx_features.pkl")
 
     dx_features = pd.read_pickle("other_data/dx_features.pkl")

@@ -222,15 +222,15 @@ def find_most_common_dx(dx_features_outcomes, icd_labels_df):
     total_with_TB = with_TB.sum()
     total_without_TB = without_TB.sum()
     
-    print("Most common dx in the 7 days before a visit, with TB:")
-    for i in range(0,10):
+    print("Most common dx in the timespan before a visit, with TB:")
+    for i in range(0,30):
         print("Code:", with_TB.index[i],", Description:", icd_lookup(icd_labels_df, with_TB.index[i], 10))
-        print("Percent:", round(100*with_TB.iloc[i]/total_with_TB, 3),"%\n")
+        print("Proportion:", round(100*with_TB.iloc[i]/total_with_TB, 3),"%\n")
     
-    print("\nMost common dx in the 7 days before a visit, without TB:")
+    print("\nMost common dx in the timespan before a visit, without TB:")
     for i in range(0,10):
         print("Code:", without_TB.index[i],", Description:", icd_lookup(icd_labels_df, without_TB.index[i], 10))
-        print("Percent:",round(100*without_TB.iloc[i]/total_without_TB, 3),"%\n")
+        print("Proportion:",round(100*without_TB.iloc[i]/total_without_TB, 3),"%\n")
 
 # plot number of visits per patient for any one-month span
 # and find the average
