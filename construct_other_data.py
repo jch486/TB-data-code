@@ -269,23 +269,31 @@ def main():
     outcomes_undersampled_fn = os.path.join('other_data', 'outcomes_undersampled.csv')
     metadata_fn = os.path.join('other_data', 'metadata.csv')
     features_formatted_undersampled_fn = os.path.join('other_data', 'features_formatted_undersampled.csv')
+    dx_features_fn = os.path.join('other_data', 'dx_features.pkl')
+    dx_features_outcomes_fn = os.path.join('other_data', 'dx_features_outcomes.pkl')
 
     # number of dimensions used in vector embedding
     dimensions = 22
 
     ##### PART 1: convert all icd-9 diagnoses in all_dx_visits_df into icd-10 #####
     if not os.path.exists(all_icd_10_fn):
+        print("creating all_icd_10.csv")
         all_icd_10 = icd9_to_icd10(all_dx_visits_df, icd9_to_icd10_df)
         all_icd_10.to_csv(all_icd_10_fn, index=False)
+    else:
+        print("all_icd_10.csv already exists")
     ##### PART 1 #####
 
     all_icd_10_df = pd.read_csv(all_icd_10_fn)
 
     ##### PART 2: group diagnoses by same patient id and date #####
     if not os.path.exists(dx_grouped_fn):
+        print("creating dx_grouped.csv")
         # create diagnoses grouped by same patient id and date from all_icd_10
         dx_grouped = group_patient_date(all_icd_10_df)
         dx_grouped.to_csv(dx_grouped_fn, index=False)
+    else:
+        print("dx_grouped.csv already exists")
     ##### PART 2 #####
 
     dx_grouped = pd.read_csv(dx_grouped_fn)
@@ -294,6 +302,7 @@ def main():
     # using: https://doi.org/10.1186/s12859-023-05597-2
     # https://github.com/kaneplusplus/icd-10-cm-embedding
     if not os.path.exists(vectors_grouped_fn):
+        print("creating vectors_grouped.pkl")
         # create grouped vectors from grouped diagnoses
         # vectors_grouped = convert_to_vector(icd_10_embedding_10d, dx_grouped, dimensions)
         top_ten_codes_30_days = ["A150", "I10", "J449", "J189", "R079", "E119", "J984", "E785", "R0602", "A1801"]
@@ -303,70 +312,93 @@ def main():
         vectors_grouped = convert_to_vector_one_hot(dx_grouped)
         # save with pickle (not using csv since it converts vectors to strings)
         vectors_grouped.to_pickle(vectors_grouped_fn)
+    else:
+        print("vectors_grouped.pkl already exists")
     ##### PART 3 #####
 
     vectors_grouped = pd.read_pickle(vectors_grouped_fn)
 
     ##### PART 4: combine vectors in the thirty days before each visit #####
     if not os.path.exists(features_fn):
+        print("creating features.csv")
         features = create_features(vectors_grouped, 30, 1, dimensions)
         features.to_csv(features_fn, index=False)
+    else:
+        print("features.csv already exists")
     ##### PART 4 #####
 
     features = pd.read_csv(features_fn)
 
     ##### PART 5: vector formatting #####
     if not os.path.exists(features_formatted_fn):
+        print("creating features_formatted.csv")
         features = pd.read_csv(features_fn)
         features_formatted = features
         features_formatted['example_id']= features_formatted[['patient_id', 'date']].values.tolist()
         cols = ['example_id'] + [f'f{i}' for i in range(1, dimensions + 1)]
         features_formatted[cols].to_csv(features_formatted_fn, index=False)
+    else:
+        print("features_formatted.csv already exists")
     ##### PART 5 #####
 
     features_formatted = pd.read_csv(features_formatted_fn)
 
     ##### PART 6: construct outcomes #####
     if not os.path.exists(outcomes_fn):
+        print("creating outcomes.csv")
         outcomes = construct_outcomes(features, tb_dx_visits_df)
         outcomes.to_csv(outcomes_fn, index=False)
+    else:
+        print("outcomes.csv already exists")
     ##### PART 6 #####
 
     outcomes = pd.read_csv(outcomes_fn)
 
     
     ##### PART N/A: construct lists of diagnoses a certain timespan before each visit and combine with outcomes #####
-    if not os.path.exists("other_data/dx_features.pkl"):
+    if not os.path.exists(dx_features_fn):
+        print("creating dx_features.pkl")
         dx_features = create_dx_features(dx_grouped, 30)
-        dx_features.to_pickle("other_data/dx_features.pkl")
+        dx_features.to_pickle(dx_features_fn)
+    else:
+        print("dx_features.pkl already exists")
 
-    dx_features = pd.read_pickle("other_data/dx_features.pkl")
+    dx_features = pd.read_pickle(dx_features_fn)
     dx_features_outcomes = dx_features.merge(outcomes, on='example_id')
-    dx_features_outcomes.to_pickle("other_data/dx_features_outcomes.pkl")
+    dx_features_outcomes.to_pickle(dx_features_outcomes_fn)
     ##### PART N/A #####
 
     '''
     ##### PART 7: balance dataset by removing some patients with no TB from outcomes #####
     if not os.path.exists(outcomes_undersampled_fn):
+        print("creating outcomes_undersampled.csv")
         outcomes_tb = outcomes[outcomes['has_tb'] == 1]
         outcomes_no_tb = outcomes[outcomes['has_no_tb'] == 1].sample(n=len(outcomes_tb), random_state=42)
         outcomes_undersampled = pd.concat([outcomes_no_tb, outcomes_tb], ignore_index=True)
         outcomes_undersampled.to_csv(outcomes_undersampled_fn, index=False)
+    else:
+        print("outcomes_undersampled.csv already exists")
     ##### PART 7 #####
 
     outcomes_undersampled = pd.read_csv(outcomes_undersampled_fn)
 
     ##### PART 8: balance dataset by removing same patients from features #####
     if not os.path.exists(features_formatted_undersampled_fn):
+        print("creating features_formatted_undersampled_fn.csv")
         features_formatted_undersampled = features_formatted[features_formatted['example_id'].isin(outcomes_undersampled['example_id'])]
         features_formatted_undersampled.to_csv(features_formatted_undersampled_fn, index=False)
+    else:
+        print("features_formatted_undersampled_fn.csv already exists")
     ##### PART 8 #####
     '''
 
     ##### PART 9: construct metadata #####
     if not os.path.exists(metadata_fn):
+        print("creating metadata.csv")
         metadata = construct_metadata(outcomes)
         metadata.to_csv(metadata_fn, index=False)
+    else:
+        print("metadata.csv already exists")
     ##### PART 9 #####
 
 if __name__ == '__main__':

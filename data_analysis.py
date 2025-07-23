@@ -392,6 +392,8 @@ def main():
     all_proc_visits_df = pd.read_csv(all_proc_visits_fn)
     icd_labels_fn = os.path.join('subsample', 'icd_labels.csv')
     icd_labels_df = pd.read_csv(icd_labels_fn)
+    dx_features_outcomes_fn = os.path.join('other_data', 'dx_features_outcomes.pkl')
+    dx_features_outcomes = pd.read_pickle(dx_features_outcomes_fn)
 
     # plot usage of ICD-9 vs ICD-10 across years
     # plot_dx_ver_year(all_dx_visits_df)
@@ -416,7 +418,6 @@ def main():
     # find_most_common_ICD_codes(index_tb_date_df, all_dx_visits_df, icd_labels_df)
 
     # find most common diagnoses before visit with/without TB diagnosis
-    dx_features_outcomes = pd.read_pickle("other_data/dx_features_outcomes.pkl")
     find_most_common_dx(dx_features_outcomes, icd_labels_df)
 
     # plot number of diagnosis + procedure visits per patient for any one-month span

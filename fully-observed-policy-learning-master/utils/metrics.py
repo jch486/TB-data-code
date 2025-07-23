@@ -13,8 +13,8 @@ def get_metrics(policy_outcomes_df, policy_colname='action', include_defer=False
     | 4          | ban_ads      | 0       | 1            | 0            |
     '''
 
-    accuracy = policy_outcomes_df.apply(
-        lambda x: x[f'{x[policy_colname]}']==1, axis=1).mean()
+    # accuracy = policy_outcomes_df.apply(
+    #     lambda x: x[f'{x[policy_colname]}']==1, axis=1).mean()
     
     # number of correct predictions of TB
     correct_TB = ((policy_outcomes_df['has_tb'] == 1) & (policy_outcomes_df['action'] == 'has_tb')).sum()
@@ -26,13 +26,13 @@ def get_metrics(policy_outcomes_df, policy_colname='action', include_defer=False
     total_no_TB = (policy_outcomes_df['has_no_tb'] == 1).sum()
     
     return {
-        'accuracy': accuracy, 
-        'correct TB': correct_TB, 
-        'total TB': total_TB, 
-        'correct no TB': correct_no_TB, 
-        'total no TB': total_no_TB, 
-        'TB prediction rate': correct_TB / total_TB, 
-        'No TB prediction rate': correct_no_TB / total_no_TB
+        # 'accuracy': accuracy, 
+        # 'correct TB': correct_TB, 
+        # 'total TB': total_TB, 
+        # 'correct no TB': correct_no_TB, 
+        # 'total no TB': total_no_TB, 
+        'TPR': correct_TB / total_TB, 
+        'FPR': 1 - correct_no_TB / total_no_TB
     }
 
     '''
