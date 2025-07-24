@@ -12,7 +12,9 @@ def main():
     df = features_formatted.merge(outcomes, on="example_id")
 
     # --- Step 2: Extract Feature Vectors and Labels ---
-    feature_cols = ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10']
+    feature_cols = ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10',
+                    'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f20',
+                    'f21', 'f22']
     X = df[feature_cols].to_numpy()
     y = df['has_tb'].to_numpy()  # 1 for TB, 0 for no TB
 
