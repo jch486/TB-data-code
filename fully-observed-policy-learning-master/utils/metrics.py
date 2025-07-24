@@ -31,8 +31,8 @@ def get_metrics(policy_outcomes_df, policy_colname='action', include_defer=False
         # 'total TB': total_TB, 
         # 'correct no TB': correct_no_TB, 
         # 'total no TB': total_no_TB, 
-        'TPR': correct_TB / total_TB, 
-        'FPR': 1 - correct_no_TB / total_no_TB
+        'TPR': round(correct_TB / total_TB, 3), 
+        'FPR': round(1 - correct_no_TB / total_no_TB, 3)
     }
 
     '''
